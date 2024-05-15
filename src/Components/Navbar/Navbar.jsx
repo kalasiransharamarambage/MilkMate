@@ -7,6 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import CowLogo from "../../assets/Img/cow.png";
 import Button from "react-bootstrap/Button";
 
+
 function NavbarComponent() {
   return (
     <Navbar style={{ backgroundColor: "#9AAFE4" }} variant="dark">
@@ -18,6 +19,7 @@ function NavbarComponent() {
             fontSize: "28px",
             fontWeight: "650",
             display: "flex",
+            
             alignItems: "center",
           }}
         >

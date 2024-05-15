@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Layout from "../src/Layout/layout";
-import Dashboard from "./Pages/DashBoard/Dashboard";
-import OrderForm from "./Pages/DashBoard/OrderForm";
+import Dashboard from "./Pages/DashBoard/";
+import OrderForm from "./Pages/OrderForm-OM/OrderForm";
 
 function App() {
   return (

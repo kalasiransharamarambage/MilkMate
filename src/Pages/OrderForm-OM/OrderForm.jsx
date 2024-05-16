@@ -14,42 +14,43 @@ function BasicExample() {
 <Form.Label>Online Ordering Form</Form.Label>
 </Col>
 </Row>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Group  controlId="formBasicEmail">
         <Row>
-          <Col xs={2} style={{ display: "flex", justifyContent: "center" }}>
+          <Col xs={2} style={{ display: "flex", justifyContent: "end" }}>
             <Form.Label>Full Name :</Form.Label>
           </Col>
           <Col xs={8}>
             <Form.Control type="text" placeholder="Enter your name" />
           </Col>
           <Col xs={2} style={{ display: "flex", justifyContent: "center", padding: "20px" }}>
-            <Image src={Delete} rounded style={{ width: "30px", height: "30px" }} />
+            <Image src={Delete} rounded style={{ width: "30px", height: "30px", marginRight:"25px" }} />
             <Image src={Edit} rounded style={{ width: "25px", height: "25px" }} />
           </Col>
         </Row>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Group controlId="formBasicEmail">
       <Row>
           <Col xs={2} style={{ display: "flex", justifyContent: "end" }}>
         <Form.Label>Email address :</Form.Label>
         </Col>
         <Col xs={8}>
         <Form.Control type="email" placeholder="Enter email" />
-        </Col>
-        <Col xs={2} style={{ display: "flex", justifyContent: "center", padding: "20px" }}>
-            <Image src={Delete} rounded style={{ width: "30px", height: "30px" }} />
-            <Image src={Edit} rounded style={{ width: "25px", height: "25px" }} />
-          </Col>
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
         
         </Form.Text>
+        </Col>
+        <Col xs={2} style={{ display: "flex", justifyContent: "center", padding: "20px" }}>
+            <Image src={Delete} rounded style={{ width: "30px", height: "30px", marginRight:"25px" }} />
+            <Image src={Edit} rounded style={{ width: "25px", height: "25px" }} />
+          </Col>
+        
         
         </Row>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Group  controlId="formBasicEmail">
         <Row>
           <Col xs={2} style={{ display: "flex", justifyContent: "end" }}>
             <Form.Label>Phone Number :</Form.Label>
@@ -58,68 +59,68 @@ function BasicExample() {
             <Form.Control type="password" placeholder="Enter Contact" />
           </Col>
           <Col xs={2} style={{ display: "flex", justifyContent: "center", padding: "20px" }}>
-            <Image src={Delete} rounded style={{ width: "30px", height: "30px" }} />
+            <Image src={Delete} rounded style={{ width: "30px", height: "30px", marginRight:"25px" }} />
             <Image src={Edit} rounded style={{ width: "25px", height: "25px" }} />
           </Col>
         </Row>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Group controlId="formBasicEmail">
       <Row>
-          <Col xs={2} style={{ display: "flex", justifyContent: "center" }}>
+          <Col xs={2} style={{ display: "flex", justifyContent: "end" }}>
         <Form.Label>District :</Form.Label>
         </Col>
           <Col>
         <Form.Control type="text" placeholder="Enter District" />
         </Col>
         <Col xs={2} style={{ display: "flex", justifyContent: "center", padding: "20px" }}>
-            <Image src={Delete} rounded style={{ width: "30px", height: "30px" }} />
+            <Image src={Delete} rounded style={{ width: "30px", height: "30px", marginRight:"25px" }} />
             <Image src={Edit} rounded style={{ width: "25px", height: "25px" }} />
           </Col>
         </Row>
 
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Group  controlId="formBasicEmail">
       <Row>
-          <Col xs={2} style={{ display: "flex", justifyContent: "center" }}>
+          <Col xs={2} style={{ display: "flex", justifyContent: "end" }}>
         <Form.Label>Delivery Address :</Form.Label>
         </Col>
         <Col>
         <Form.Control type="text" placeholder="Enter Address" />
         </Col>
         <Col xs={2} style={{ display: "flex", justifyContent: "center", padding: "20px" }}>
-            <Image src={Delete} rounded style={{ width: "30px", height: "30px" }} />
+            <Image src={Delete} rounded style={{ width: "30px", height: "30px", marginRight:"25px" }} />
             <Image src={Edit} rounded style={{ width: "25px", height: "25px" }} />
           </Col>
         </Row>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Group  controlId="formBasicEmail">
       <Row>
-          <Col xs={2} style={{ display: "flex", justifyContent: "center" }}>
+          <Col xs={2} style={{ display: "flex", justifyContent: "end" }}>
         <Form.Label>Quantity :</Form.Label>
         </Col>
         <Col>
         <Form.Control type="text" placeholder="Enter Quantity" />
         </Col>
-        <Col xs={2} style={{ display: "flex", justifyContent: "center", padding: "20px" }}>
-            <Image src={Delete} rounded style={{ width: "30px", height: "30px" }} />
+        <Col xs={2} style={{ display: "flex", justifyContent: "center",  }}>
+            <Image src={Delete} rounded style={{ width: "30px", height: "30px", marginRight:"25px" }} />
             <Image src={Edit} rounded style={{ width: "25px", height: "25px" }} />
           </Col>
         </Row>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Group  controlId="formBasicEmail">
         <Row>
-        <Col xs={2} style={{ display: "flex", justifyContent: "center" }}>
+        <Col xs={2} style={{ display: "flex", justifyContent: "end" }}>
         <Form.Label>Pack Size :</Form.Label>
         </Col>
         <Col>
         <Form.Control type="text" placeholder="Enter packsize" />
         </Col>
         <Col xs={2} style={{ display: "flex", justifyContent: "center", padding: "20px" }}>
-            <Image src={Delete} rounded style={{ width: "30px", height: "30px" }} />
+            <Image src={Delete} rounded style={{ width: "30px", height: "30px", marginRight:"25px" }} />
             <Image src={Edit} rounded style={{ width: "25px", height: "25px" }} />
           </Col>
         </Row>

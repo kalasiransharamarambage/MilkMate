@@ -88,9 +88,7 @@ function Dashboard() {
               color: "#4A4B4E",
             }}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad.
+           
           </h4>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <Button

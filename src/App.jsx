@@ -4,7 +4,7 @@ import Layout from "../src/Layout/layout";
 import Dashboard from "./Pages/Dashboard-OM/Dashboard";
 import OrderForm from "./Pages/OrderForm-OM/OrderForm";
 import CardDetails from "./Pages/CardDetails-OM/CardDetails";
-
+import Yogurt from "./Pages/Yogurt-OM/yogurt";
 
 function App() {
   return (
@@ -14,6 +14,8 @@ function App() {
           <Route path="/home" element={<Dashboard />} />
           <Route path="/orderForm" element={<OrderForm />} />
           <Route path="/carddetails" element={<CardDetails />} />
+          <Route path="/yogurt" element={< Yogurt/>} />
+        
         </Route>
       </Routes>
     </Router>

@@ -6,12 +6,13 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import ProductCard from "../../Components/ProductCard/ProductCard";
-import yoghurt from "../../assets/Img/yogurt.jpg"
+import yoghurt from "../../assets/Img/drink.png";
 import curd from "../../assets/Img/curd2.png"
 import cheese from "../../assets/Img/cheese.jpg";
 import Butter from "../../assets/Img/Butter.png";
 import MilkPowder from "../../assets/Img/milkPowder.jpg"
-import drink from "../../assets/Img/drink.png";
+import drink from "../../assets/Img/yogurt.jpg"
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import  { useEffect } from 'react';

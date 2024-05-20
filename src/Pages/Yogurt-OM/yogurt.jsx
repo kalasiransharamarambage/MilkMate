@@ -12,16 +12,16 @@ function yogurt() {
                     <h1> Yogurt </h1>
                     </Col>
                     <Col style={{ display: "flex", justifyContent: "center" }}>
-                    <Image src={yoghurt} rounded style={{ width: "auto", height: "80vh" }} />
+                    <Image src={yoghurt} rounded style={{ width: "auto", height: "50vh" }} />
                     </Col>
-                    <Row style={{ display: "flex", justifyContent: "center" }}>
+                    <Row xs={2}  style={{ display: "flex", justifyContent: "center" ,fontWeight: "bold"  }}>
                     <p>
                     Including in creamy goodness delivered straight to your doorstep . 
                     Explore exquisite range of yogurt delights on our online dairy delivery platform today .
                         </p>
                    
                     </Row>
-                    <Row style={{ display: "flex", justifyContent: "center" }} >
+                    <Row style={{ display: "flex", justifyContent: "center" , fontWeight: "bold"  }} >
                             Rs.100.00
                     </Row>
                     

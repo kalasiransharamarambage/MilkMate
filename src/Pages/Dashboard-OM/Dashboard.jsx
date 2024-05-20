@@ -123,7 +123,7 @@ function Dashboard() {
           </Row>
 
 
-    <Row style={{padding:"20px", backgroundColor:"#9AAFE4", borderRadius:"20px"}}>
+    <Row style={{padding:"px", backgroundColor:"#9AAFE4", borderRadius:"20px"}}>
         <Col style={{ justifyContent:"end"}}>
         <h4>
             Quick Links

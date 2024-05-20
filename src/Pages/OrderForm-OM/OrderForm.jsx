@@ -19,8 +19,8 @@ function BasicExample() {
           <Col xs={2} style={{ display: "flex", justifyContent: "end" }}>
             <Form.Label>Full Name :</Form.Label>
           </Col>
-          <Col xs={8}>
-            <Form.Control type="text" placeholder="Enter your name" />
+          <Col xs={8}  >
+            <Form.Control style={{backgroundColor:"#9AAFE4"}} type="text" placeholder="Enter your name" />
           </Col>
           <Col xs={2} style={{ display: "flex", justifyContent: "center", padding: "20px" }}>
             <Image src={Delete} rounded style={{ width: "30px", height: "30px", marginRight:"25px" }} />
@@ -32,10 +32,10 @@ function BasicExample() {
       <Form.Group controlId="formBasicEmail">
       <Row>
           <Col xs={2} style={{ display: "flex", justifyContent: "end" }}>
-        <Form.Label>Email address :</Form.Label>
+        <Form.Label >Email address :</Form.Label>
         </Col>
         <Col xs={8}>
-        <Form.Control type="email" placeholder="Enter email" />
+        <Form.Control style={{backgroundColor:"#9AAFE4"}} type="email" placeholder="Enter email" />
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
         
@@ -56,7 +56,7 @@ function BasicExample() {
             <Form.Label>Phone Number :</Form.Label>
           </Col>
           <Col>
-            <Form.Control type="password" placeholder="Enter Contact" />
+            <Form.Control style={{backgroundColor:"#9AAFE4"}} type="password" placeholder="Enter Contact" />
           </Col>
           <Col xs={2} style={{ display: "flex", justifyContent: "center", padding: "20px" }}>
             <Image src={Delete} rounded style={{ width: "30px", height: "30px", marginRight:"25px" }} />
@@ -71,7 +71,7 @@ function BasicExample() {
         <Form.Label>District :</Form.Label>
         </Col>
           <Col>
-        <Form.Control type="text" placeholder="Enter District" />
+        <Form.Control style={{backgroundColor:"#9AAFE4"}} type="text" placeholder="Enter District" />
         </Col>
         <Col xs={2} style={{ display: "flex", justifyContent: "center", padding: "20px" }}>
             <Image src={Delete} rounded style={{ width: "30px", height: "30px", marginRight:"25px" }} />
@@ -87,7 +87,7 @@ function BasicExample() {
         <Form.Label>Delivery Address :</Form.Label>
         </Col>
         <Col>
-        <Form.Control type="text" placeholder="Enter Address" />
+        <Form.Control style={{backgroundColor:"#9AAFE4"}} type="text" placeholder="Enter Address" />
         </Col>
         <Col xs={2} style={{ display: "flex", justifyContent: "center", padding: "20px" }}>
             <Image src={Delete} rounded style={{ width: "30px", height: "30px", marginRight:"25px" }} />
@@ -102,7 +102,7 @@ function BasicExample() {
         <Form.Label>Quantity :</Form.Label>
         </Col>
         <Col>
-        <Form.Control type="text" placeholder="Enter Quantity" />
+        <Form.Control style={{backgroundColor:"#9AAFE4"}} type="text" placeholder="Enter Quantity" />
         </Col>
         <Col xs={2} style={{ display: "flex", justifyContent: "center",  }}>
             <Image src={Delete} rounded style={{ width: "30px", height: "30px", marginRight:"25px" }} />
@@ -117,7 +117,7 @@ function BasicExample() {
         <Form.Label>Pack Size :</Form.Label>
         </Col>
         <Col>
-        <Form.Control type="text" placeholder="Enter packsize" />
+        <Form.Control style={{backgroundColor:"#9AAFE4"}} type="text" placeholder="Enter packsize" />
         </Col>
         <Col xs={2} style={{ display: "flex", justifyContent: "center", padding: "20px" }}>
             <Image src={Delete} rounded style={{ width: "30px", height: "30px", marginRight:"25px" }} />

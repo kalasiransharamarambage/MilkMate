@@ -27,7 +27,18 @@ function yogurt() {
                     
                    
                 </Col>
+
+                <Row>
+        <Col style={{ display: "flex", justifyContent: "center" }}>
+          <Button variant="outline-primary" type="submit">
+            Check Out
+          </Button>
+        </Col>
+      </Row>
+      
             </Row>
+        
+
         </Container>
     );
 }

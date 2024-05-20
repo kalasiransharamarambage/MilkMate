@@ -6,6 +6,9 @@ import OrderForm from "./Pages/OrderForm-OM/OrderForm";
 import CardDetails from "./Pages/CardDetails-OM/CardDetails";
 import Yogurt from "./Pages/Yogurt-OM/yogurt";
 import MyCart from "./Pages/MyCart-OM/mycart";
+import Help from "./Pages/Help-OM/Help";
+
+
 
 function App() {
   return (
@@ -16,7 +19,9 @@ function App() {
           <Route path="/orderForm" element={<OrderForm />} />
           <Route path="/carddetails" element={<CardDetails />} />
           <Route path="/yogurt" element={< Yogurt/>} />
-          <Route path="/mycart" element={< MyCart/>} />     
+          <Route path="/mycart" element={< MyCart/>} /> 
+          <Route path="/Help" element={< Help/>} /> 
+              
         </Route>
       </Routes>
     </Router>

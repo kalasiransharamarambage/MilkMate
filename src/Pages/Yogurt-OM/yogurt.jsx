@@ -1,6 +1,7 @@
 import React from 'react'
 import { Image, Row, Col, Container } from 'react-bootstrap';
 import yoghurt from "../../assets/Img/drink.png";
+import Button from 'react-bootstrap/Button';
 
 function yogurt() {
     return (
@@ -27,15 +28,25 @@ function yogurt() {
                     
                    
                 </Col>
-
                 <Row>
-        <Col style={{ display: "flex", justifyContent: "center" }}>
+        <Col style={{ display: "flex", justifyContent: "start"  }}>
+          <Button  variant="outline-primary" type="submit">
+            Order Now
+          </Button>
+        </Col>
+      
+      
+      
+        <Col style={{ display: "flex", justifyContent: "end"  }}>
           <Button variant="outline-primary" type="submit">
-            Check Out
+            Add to Cart
           </Button>
         </Col>
       </Row>
-      
+      <Row style={{padding:"20px", backgroundColor:"white", borderRadius:"5px"}}>
+
+</Row>
+
             </Row>
         
 

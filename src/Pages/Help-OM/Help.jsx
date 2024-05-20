@@ -112,6 +112,15 @@ function Help() {
         <Col>
 
             </Col>
+       
+       
+       <Row>
+       <Col style={{ display: "flex", justifyContent: "center"  }}>
+          <Button variant="outline-primary" type="submit">
+            Back
+          </Button>
+          </Col>
+       </Row>
        </Row>
       </Container>
   )

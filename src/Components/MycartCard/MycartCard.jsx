@@ -1,6 +1,9 @@
 import React from "react";
 import { Col, Container, Row, Image } from "react-bootstrap";
 import Yogurt from "../../assets/Img/yogurt.jpg";
+import Curd from "../../assets/Img/yogurt.jpg";
+
+
 function MycartCard() {
   return (
     <>
@@ -31,7 +34,13 @@ function MycartCard() {
             </Col>
           </Col>
         </Row>
+
+        
       </Container>
+
+     
+
+      
     </>
   );
 }

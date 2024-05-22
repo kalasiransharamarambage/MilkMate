@@ -12,7 +12,11 @@ function mycart() {
 
         <Col xs={4}></Col>
       </Row>
+      
+      
+      
     </Container>
+    
   );
 }
 

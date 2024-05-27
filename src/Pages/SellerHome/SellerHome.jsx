@@ -6,56 +6,53 @@ import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import { MdAppRegistration } from "react-icons/md";
-import { MdPayment } from "react-icons/md";
-import { MdSecurity } from "react-icons/md";
-import { FaPersonRunning } from "react-icons/fa6";
-import { FaRegistered } from "react-icons/fa";
+import { MdAppRegistration, MdPayment, MdSecurity } from "react-icons/md";
+import { FaPersonRunning, FaRegistered, FaList } from "react-icons/fa6";
 import { IoInformationCircle } from "react-icons/io5";
-import { FaList } from "react-icons/fa6";
 
-function SellerHome() {
-  return (
-    <>
-        <Card
-        style={{
-          minHeight: '18rem',
-          padding: '10px',
-          margin: '40px',
-          border: 'none',
-          backgroundColor: '#C9E9F2',
-          boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.5)',
-        }}
-      >
-        <Row className="text-center align-items-center h-100">
-          <Col xs={12} md={6} className="mb-3 mb-md-0">
-            <span style={{ fontSize: '4rem', margin: '1.5rem' }}>Sell on</span>
-            <br />
-            <span style={{ fontSize: '4rem' }}>Milk Mate</span>
-          </Col>
-          <Col xs={12} md={6} className="d-flex justify-content-center">
-            <Image
-              src={Milk01}
-              style={{
-                width: '100%',
-                maxWidth: '500px',
-                height: 'auto',
-                borderRadius: '20px',
-              }}
-            />
-          </Col>
-        </Row>
-      </Card>
-
-      <Card
-        style={{
-          minHeight: '18rem',
-          padding: '20px',
-          margin: '40px',
-          border: 'none',
-          boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.5)',
-        }}
-      >
+const cardData = [
+  {
+    id: 1,
+    style: {
+      minHeight: '18rem',
+      padding: '10px',
+      margin: '40px',
+      border: 'none',
+      backgroundColor: '#C9E9F2',
+      boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.5)',
+    },
+    content: (
+      <Row className="text-center align-items-center h-100">
+        <Col xs={12} md={6} className="mb-3 mb-md-0">
+          <span style={{ fontSize: '4rem', margin: '1.5rem' }}>Sell on</span>
+          <br />
+          <span style={{ fontSize: '4rem' }}>Milk Mate</span>
+        </Col>
+        <Col xs={12} md={6} className="d-flex justify-content-center">
+          <Image
+            src={Milk01}
+            style={{
+              width: '100%',
+              maxWidth: '500px',
+              height: 'auto',
+              borderRadius: '20px',
+            }}
+          />
+        </Col>
+      </Row>
+    ),
+  },
+  {
+    id: 2,
+    style: {
+      minHeight: '18rem',
+      padding: '20px',
+      margin: '40px',
+      border: 'none',
+      boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.5)',
+    },
+    content: (
+      <>
         <span
           style={{
             fontSize: '3rem',
@@ -89,53 +86,57 @@ function SellerHome() {
             </div>
           </Col>
         </Row>
-      </Card>
-
-      <Card
-        style={{
-          minHeight: '18rem',
-          padding: '20px',
-          margin: '40px',
-          border: 'none',
-          backgroundColor: '#C9E9F2',
-          boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.5)',
-        }}
-      >
-        <Row className="text-center h-100">
-          <Col xs={12} md={6} className="d-flex justify-content-center">
-            <Image
-              src={Milk02}
-              style={{
-                width: '100%',
-                maxWidth: '500px',
-                height: 'auto',
-                borderRadius: '20px',
-              }}
-            />
-          </Col>
-          <Col xs={12} md={6} className="mb-3 mb-md-0">
-            <span style={{ fontSize: '3rem', margin: '1.5rem' }}>
-              What are you waiting for?
-            </span>
-            <br />
-            <span style={{ fontSize: '3rem' }}>Join with us</span>
-            <br />
-            <Button variant="outline-primary" className="mt-3">Add Products</Button>
-            <br />
-            <Button variant="outline-primary" className="mt-3">View Details</Button>
-          </Col>
-        </Row>
-      </Card>
-
-      <Card
-        style={{
-          minHeight: '18rem',
-          padding: '20px',
-          margin: '40px',
-          border: 'none',
-          boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.5)',
-        }}
-      >
+      </>
+    ),
+  },
+  {
+    id: 3,
+    style: {
+      minHeight: '18rem',
+      padding: '20px',
+      margin: '40px',
+      border: 'none',
+      backgroundColor: '#C9E9F2',
+      boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.5)',
+    },
+    content: (
+      <Row className="text-center h-100">
+        <Col xs={12} md={6} className="d-flex justify-content-center">
+          <Image
+            src={Milk02}
+            style={{
+              width: '100%',
+              maxWidth: '500px',
+              height: 'auto',
+              borderRadius: '20px',
+            }}
+          />
+        </Col>
+        <Col xs={12} md={6} className="mb-3 mb-md-0">
+          <span style={{ fontSize: '3rem', margin: '1.5rem' }}>
+            What are you waiting for?
+          </span>
+          <br />
+          <span style={{ fontSize: '3rem' }}>Join with us</span>
+          <br />
+          <Button variant="outline-primary" className="mt-3">Add Products</Button>
+          <br />
+          <Button variant="outline-primary" className="mt-3">All Products</Button>
+        </Col>
+      </Row>
+    ),
+  },
+  {
+    id: 4,
+    style: {
+      minHeight: '18rem',
+      padding: '20px',
+      margin: '40px',
+      border: 'none',
+      boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.5)',
+    },
+    content: (
+      <>
         <span
           style={{
             fontSize: '3rem',
@@ -167,7 +168,19 @@ function SellerHome() {
             </div>
           </Col>
         </Row>
-      </Card>
+      </>
+    ),
+  },
+];
+
+function SellerHome() {
+  return (
+    <>
+      {cardData.map((card) => (
+        <Card key={card.id} style={card.style}>
+          {card.content}
+        </Card>
+      ))}
     </>
   );
 }

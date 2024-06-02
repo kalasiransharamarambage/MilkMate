@@ -6,6 +6,7 @@ import SellerLogin from "./Pages/SellerLogin/SellerLogin.jsx";
 import SellerHome from "./Pages/SellerHome/SellerHome.jsx";
 import SellerAddProducts from "./Pages/SellerAddProducts/SellerAddProducts.jsx";
 import Sellerallproducts from "./Pages/AllProducts/AllProducts.jsx";
+import Sellerpayment from "./Pages/SellerPayment/SellerPayment.jsx";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/sellerhome" element={<SellerHome />} />
           <Route path="/selleraddproducts" element={<SellerAddProducts />} />
           <Route path="/sellerallproducts" element={<Sellerallproducts />} />
+          <Route path="/sellerpayment" element={<Sellerpayment />} />
         </Route>
       </Routes>
     </Router>

@@ -3,8 +3,10 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
 import yoghurt from "../../assets/Img/yogurt.jpg";
+import curd from "../../assets/Img/curd.png";
+import drink from "../../assets/Img/drink.png";
 
-function ProductCard({ img, title, paragraph }) {
+function ProductCard({ img, title }) {
   return (
     <Card
       style={{
@@ -39,10 +41,20 @@ function ProductCard({ img, title, paragraph }) {
           textAlign: "center",
         }}
       >
-    <Button variant="outline-primary">Add to Cart</Button>
+        <Button variant="outline-primary">Add to Cart</Button>
       </div>
     </Card>
   );
 }
 
-export default ProductCard;
+function ProductList() {
+  return (
+    <div>
+      <ProductCard img={yoghurt} title="Yoghurt" />
+      <ProductCard img={curd} title="Curd" />
+      <ProductCard img={drink} title="Drink" />
+    </div>
+  );
+}
+
+export default ProductList;

@@ -16,6 +16,7 @@ import drink from "../../assets/Img/yogurt.jpg"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import  { useEffect } from 'react';
+import Footer from "../../Components/Footer/Footer";
 
 
 function Dashboard() {
@@ -115,7 +116,7 @@ function Dashboard() {
           {Card_IMG.map((item, index) => (
             <Col data-aos="fade-up" key={index} xs={12} sm={6} md={4} lg={4} xl={4} style={{ display: "flex", justifyContent: "center" }}>
               <ProductCard img={item.img} title={item.title} paragraph={item.paragraph} />
-            </Col>
+              </Col>
           ))}
         </Row>
           <Row style={{padding:"20px", backgroundColor:"white", borderRadius:"5px"}}>
@@ -123,45 +124,7 @@ function Dashboard() {
           </Row>
 
 
-    <Row style={{padding:"px", backgroundColor:"#9AAFE4", borderRadius:"20px"}}>
-        <Col style={{ justifyContent:"end"}}>
-        <h4>
-            Quick Links
-        </h4>
-        <Row>
-         Home
-         </Row>
-
-         <Row>
-         About
-         </Row>
-         <Row>
-         Services
-         </Row>
-        </Col>
-        <Col>
-        <h4>
-          Contact Info
-          </h4>
-          <Row>0721902781</Row>
-          <Row>0712837259</Row>
-          <Row>dailyproducts2024@gmail.com</Row>
-          <Row>2/A,High Level Road,Galle</Row></Col>
-        <Col>
-        <h4>
-          Follow Us</h4>
-          <Row>Facebook</Row>
-          <Row>
-            Twitter
-          </Row>
-          <Row>Instagram</Row>
-          <Row>Whatsapp</Row>
-          <Row>Linkedin</Row>
-        </Col>
-          
-    </Row>
-  
-
+            <Footer />
 
 
       </Container>

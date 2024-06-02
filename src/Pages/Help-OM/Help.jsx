@@ -1,106 +1,76 @@
 import React from 'react';
-import { Button, Col, Container, Row, Form } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, ListGroup } from 'react-bootstrap';
 
-function Help() {
+const Help = () => {
   return (
     <Container>
-      <Row>
-        <Col>
-          <Row>
-            <Col style={{ display: "flex", justifyContent: "end", padding: "0", backgroundColor: "#9AAFE4" }}>
-              <Button variant="outline-primary" type="submit">
-                HELP CENTER
-              </Button>
+      <Row className="justify-content-center mt-5">
+        <Col md={6}>
+          <h1 className="text-center mb-4">How can we help you?</h1>
+          <Form>
+            <Form.Group controlId="formSearch">
+              <Form.Control type="text" placeholder="Enter your question or keyword" />
+            </Form.Group>
+            <Button variant="primary" type="submit" className="w-100">
+              Search
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+
+      <Row className="justify-content-center mt-5">
+        <Col md={8}>
+          <h3 className="text-center mb-4">Popular Topics</h3>
+            
+          <ListGroup>
+            <Row>
+            <Col>
+            <ListGroup.Item>How to create my account?</ListGroup.Item>
+            <ListGroup.Item>What is Clicons Returns policy?</ListGroup.Item>
+            <ListGroup.Item>How long is refund process?</ListGroup.Item>
             </Col>
+            <Col>
+            <ListGroup.Item>What are the "delivery Timelines"?</ListGroup.Item>
+            <ListGroup.Item>How to change my password?</ListGroup.Item>
+            <ListGroup.Item>How to update my information?</ListGroup.Item>
+            </Col>
+            <Col>
+            <ListGroup.Item>How to cancel Clicons Order?</ListGroup.Item>
+            <ListGroup.Item>Ask the Digital and Device Community?</ListGroup.Item>
+            <ListGroup.Item>How to change my shop name?</ListGroup.Item>
+          </Col>
           </Row>
-
-          <Row>
-            <h3>How we can help you!</h3>
-          </Row>
-
-          <Row>
-            <Form.Control style={{ backgroundColor: "#9AAFE4" }} type="text" placeholder="Enter your name" />
-            <Button variant="outline-primary" type="submit">SEARCH</Button>
-          </Row>
-        </Col>
-        <Col></Col>
-      </Row>
-
-      <Row style={{ display: "flex", justifyContent: "end" }}>
-        <h5>Popular Topics</h5>
-      </Row>
-      <Row>
-        <Col>
-          <Row>-How do I return my time?</Row>
-          <Row>What is Clicons Returns policy?</Row>
-          <Row>How long is refund process?</Row>
-        </Col>
-        <Col>
-          <Row>-What are the "delivery Timelines"?</Row>
-          <Row>What is "Discover your Daraz Campaign 2022"?</Row>
-          <Row>What is the Voucher & Gift offer in the Campaign?</Row>
-        </Col>
-        <Col>
-          <Row>-How to cancel Clicons Order?</Row>
-          <Row>Ask the Digital and Device Community?</Row>
-          <Row>How to change my shop name?</Row>
+          </ListGroup>
+      
         </Col>
       </Row>
 
-      <Row style={{ padding: "20px", backgroundColor: "white", borderRadius: "15px" }}></Row>
-
-      <Row>
-        <Col style={{ display: "flex", justifyContent: "center" }}>
-          <Button variant="outline-primary" type="submit">
-            CONTACT US
+      <Row className="justify-content-center mt-5">
+        <Col md={6} className="text-center">
+          <h3 className="mb-4">Don't find your answer?</h3>
+          <h4 className="mb-4">Contact with us</h4>
+          <Button variant="outline-primary" className="mr-3">
+            Call on me
+            <br />
+            +1 (555) 123-4567
+          </Button>
+          <Button variant="outline-primary">
+            Chat with us
+            <br />
+            example@example.com
           </Button>
         </Col>
-        <Row xs={2}><h4>Don't find your answer</h4></Row>
-        <Row>
-          <Row>
-            <Col xs={1}>
-              {/* Image Placeholder */}
-            </Col>
-            <Col xs={4}>
-              <h6>Call us now</h6>
-              <p> We are available online from 9.00 AM to 5.00PM (GMT+5:45). Talk with us now</p>
-              <h4>+94-xxx-xxxx</h4>
-            </Col>
-            <Row>
-              <Col style={{ display: "flex", justifyContent: "center" }}>
-                <Button variant="outline-primary" type="submit">
-                  CALL NOW
-                </Button>
-              </Col>
-            </Row>
-            <Col xs={1}>
-              {/* Image Placeholder */}
-            </Col>
-            <Col xs={4}>
-              <h6>Chat with us</h6>
-              <p> We are available online from 9.00 AM to 5.00PM (GMT+5:45). Talk with us now</p>
-              <h4>Support@clicon.com</h4>
-            </Col>
-            <Row>
-              <Col style={{ display: "flex", justifyContent: "center" }}>
-                <Button variant="outline-primary" type="submit">
-                  CONTACT US
-                </Button>
-              </Col>
-            </Row>
-          </Row>
-        </Row>
-        <Col></Col>
       </Row>
-      <Row>
-        <Col style={{ display: "flex", justifyContent: "center" }}>
-          <Button variant="outline-primary" type="submit">
+
+      <Row className="justify-content-center mt-5">
+        <Col md={2}>
+          <Button variant="secondary" className="w-100">
             Back
           </Button>
         </Col>
       </Row>
     </Container>
   );
-}
+};
 
 export default Help;

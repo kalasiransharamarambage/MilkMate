@@ -3,6 +3,7 @@ import CartCard from "../../Components/MycartCard/MycartCard";
 import { Col, Container, Row } from "react-bootstrap";
 
 function mycart() {
+  
   const SAMPLE_DATA =[
     {
       name:"Sahan",

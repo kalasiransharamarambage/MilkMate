@@ -54,8 +54,7 @@ function SellerAddProducts() {
                 />
               </Col>
               <Col xs={12} md={2} className="text-center d-flex align-items-center justify-content-center">
-                <MdDelete style={{ cursor: 'pointer' }} />
-                <FaEdit style={{ cursor: 'pointer', marginLeft: '10px' }} />
+               
               </Col>
             </Row>
           </Form.Group>
@@ -79,8 +78,7 @@ function SellerAddProducts() {
                 />
               </Col>
               <Col xs={12} md={2} className="text-center d-flex align-items-center justify-content-center">
-                <MdDelete style={{ cursor: 'pointer' }} />
-                <FaEdit style={{ cursor: 'pointer', marginLeft: '10px' }} />
+             
               </Col>
             </Row>
           </Form.Group>

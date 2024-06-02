@@ -5,7 +5,7 @@ import Dashboard from "./Pages/DashBoard/Dashboard";
 import SellerLogin from "./Pages/SellerLogin/SellerLogin.jsx";
 import SellerHome from "./Pages/SellerHome/SellerHome.jsx";
 import SellerAddProducts from "./Pages/SellerAddProducts/SellerAddProducts.jsx";
-import Sellertabs from "./Components/Tabs/Tabs.jsx";
+import Sellerallproducts from "./Pages/AllProducts/AllProducts.jsx";
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
           <Route path="/sellerlogin" element={<SellerLogin />} />
           <Route path="/sellerhome" element={<SellerHome />} />
           <Route path="/selleraddproducts" element={<SellerAddProducts />} />
-          <Route path="/sellertabs" element={<Sellertabs />} />
+          <Route path="/sellerallproducts" element={<Sellerallproducts />} />
         </Route>
       </Routes>
     </Router>

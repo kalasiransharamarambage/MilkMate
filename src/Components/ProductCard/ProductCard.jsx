@@ -47,14 +47,6 @@ function ProductCard({ img, title }) {
   );
 }
 
-function ProductList() {
-  return (
-    <div>
-      <ProductCard img={yoghurt} title="Yoghurt" />
-      <ProductCard img={curd} title="Curd" />
-      <ProductCard img={drink} title="Drink" />
-    </div>
-  );
-}
 
-export default ProductList;
+
+export default ProductCard;

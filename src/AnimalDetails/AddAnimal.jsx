@@ -1,4 +1,5 @@
 import React from 'react'
+import Navbar from '../Components/Navbar/Navbar.jsx';
 
 export default function AddAnimal() {
 
@@ -166,6 +167,7 @@ export default function AddAnimal() {
 
   return (
     <div>
+        <Navbar/>
       <div style={FullPageRec}>
         <div style={upperRec}>
             <div style={AddPhotoCircle}><h3 style={{margin:'auto',marginTop:'-20px',textAlign:'center',fontWeight:'650'}}>Add Photo</h3></div>

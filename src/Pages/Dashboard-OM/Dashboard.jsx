@@ -6,12 +6,13 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import ProductCard from "../../Components/ProductCard/ProductCard";
-import yoghurt from "../../assets/Img/yogurt.jpg"
+import yoghurt from "../../assets/Img/drink.png";
 import curd from "../../assets/Img/curd2.png"
 import cheese from "../../assets/Img/cheese.jpg";
 import Butter from "../../assets/Img/Butter.png";
 import MilkPowder from "../../assets/Img/milkPowder.jpg"
-import drink from "../../assets/Img/drink.png";
+import drink from "../../assets/Img/yogurt.jpg"
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import  { useEffect } from 'react';
@@ -68,7 +69,7 @@ function Dashboard() {
           <Image src={DashboardImg} style={{ width: "auto", height: "80vh" }} />
         </Col>
         <Col data-aos="fade-left" style={{ marginTop: "50px" }}>
-          <h1
+          <h3
             style={{
               marginTop: "100px",
               textAlign: "start",
@@ -77,10 +78,8 @@ function Dashboard() {
               color: "#08184F",
             }}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad.
-          </h1>
+            Introducing MilkMate, your go-to platform for sustainable dairy solutions! We specialize in collecting surplus milk from vendors and transforming it into delicious dairy products. Our user-friendly website allows customers to easily browse and order their favorite items for delivery right to their doorstep. Join us in reducing food waste and indulging in freshly made dairy delights!
+          </h3>
           <h4
             style={{
               marginTop: "1px",
@@ -89,9 +88,7 @@ function Dashboard() {
               color: "#4A4B4E",
             }}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad.
+           
           </h4>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <Button

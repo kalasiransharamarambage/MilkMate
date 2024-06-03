@@ -6,6 +6,8 @@ import cow3 from "../assets/akilaImages/cow3.jpg";
 import cow4 from "../assets/akilaImages/cow4.jpg";
 import cow5 from "../assets/akilaImages/cow5.jpeg";
 
+import Navbar from '../Components/Navbar/Navbar.jsx';
+
 
 export default function SeeAnimal() {
 
@@ -134,6 +136,7 @@ export default function SeeAnimal() {
 
   return (
     <div>
+      <Navbar/>
       <div style={outerContainerStyle}>
         <img src={searchCow} alt="Cow Icon" style={imageStyle} />
 

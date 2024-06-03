@@ -7,6 +7,8 @@ import homepic from '../assets/akilaImages/homepic.jpg';
 import homecow from '../assets/akilaImages/homecow.jpg';
 import homegoat from '../assets/akilaImages/homegoat.jpg';
 
+import Navbar from '../Components/Navbar/Navbar.jsx';
+
 
 
 
@@ -50,6 +52,7 @@ export default function Animal() {
 
   return (
     <div>
+      {/* <Navbar/> */}
       <img style={homepicStyle} src={homepic} alt="homepic" /><br />
       <span style={spanStyle}> Choose your Animal </span><br /><br />
 

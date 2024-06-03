@@ -3,6 +3,8 @@ import animal2 from '../assets/akilaImages/animal2.jpg';
 import eyeImage from '../assets/akilaImages/eye.png';
 import cowArtImage from '../assets/akilaImages/cowArt.jpg';
 
+import Navbar from '../Components/Navbar/Navbar.jsx';
+
 export default function Animal2() {
 
     const bgstyle = {
@@ -57,6 +59,8 @@ export default function Animal2() {
     
 
   return (
+    <div>
+        <Navbar/>
     <div style={bgstyle}>
         <div style={cardContainerStyle}>
             <div style={cardStyle} >
@@ -85,6 +89,7 @@ export default function Animal2() {
             </div>     
         </div>   
         
+    </div>
     </div>
     
   )

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Navbar from '../Components/Navbar/Navbar.jsx';
+
 export default function AnimalProfile() {
 
     const FullPageRec = {
@@ -104,6 +106,7 @@ export default function AnimalProfile() {
 
   return (
     <div>
+        <Navbar/>
       <div style={FullPageRec}>
         <div style={upperRec}>
             <div style={AnimalPhotoRec}>

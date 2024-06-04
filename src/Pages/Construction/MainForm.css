@@ -1,0 +1,20 @@
+.main-form {
+  padding: 50px 15px;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 576px) {
+  .main-form {
+      padding: 30px 10px;
+  }
+  .action-buttons {
+      flex-direction: column;
+  }
+  .action-buttons .btn {
+      margin: 5px 0;
+  }
+}

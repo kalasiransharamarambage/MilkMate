@@ -97,7 +97,7 @@ const styles = {
     fontFamily: 'Arial, sans-serif',
   },
   title: {
-    color: '#fff',
+   
     textAlign: 'left',
     color: '#000000',
     fontFamily:'Bold'
@@ -112,7 +112,6 @@ const styles = {
     
   },
   label: {
-    color: '#fff',
     display: 'block',
     marginBottom: '5px',
     color: '#000000'

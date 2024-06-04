@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Navbar from '../Components/Navbar/Navbar.jsx';
+import { Button } from 'react-bootstrap';
 
 export default function AnimalProfile() {
 
@@ -101,6 +102,15 @@ export default function AnimalProfile() {
         height: '30vh',
     }
 
+    // const EditDeleteButtonStyle = {
+    //     display : 'flex',
+    //     backgroundColor: '#E0F7FA',
+    //     borderRadius: "15px",
+    //     width:"100%",
+    //     border:'0px',
+        
+    // }
+
 
 
 
@@ -114,8 +124,12 @@ export default function AnimalProfile() {
             </div>
             <div style={EditDeleteNameRec}>
                 <div style={EditDeleteMainRec}>
-                    <div style={EditDeleteSubRec}></div>
-                    <div style={EditDeleteSubRec}></div>
+                    <div style={EditDeleteSubRec}>
+                        <Button style={{width:'100%',borderRadius:'15px',backgroundColor: '#E0F7FA'}}><span style={{color:'black',fontSize:'20px',fontWeight:'600'}}>Edit</span></Button>
+                    </div>
+                    <div style={EditDeleteSubRec}>
+                        <Button style={{width:'100%', borderRadius:'15px',backgroundColor: '#E0F7FA',}}><span style={{color:'black',fontSize:'20px',fontWeight:'600'}}>Delete</span></Button>
+                    </div>
                 </div>
                 <div style={DetailsRec}></div>
                 <div style={DetailsRec}></div>

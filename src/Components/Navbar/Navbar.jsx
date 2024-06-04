@@ -7,7 +7,6 @@ import Navbar from "react-bootstrap/Navbar";
 import CowLogo from "../../assets/Img/cow.png";
 import Button from "react-bootstrap/Button";
 
-
 function NavbarComponent() {
   return (
     <Navbar style={{ backgroundColor: "#9AAFE4" }} variant="dark">
@@ -19,7 +18,6 @@ function NavbarComponent() {
             fontSize: "28px",
             fontWeight: "650",
             display: "flex",
-            
             alignItems: "center",
           }}
         >
@@ -46,6 +44,22 @@ function NavbarComponent() {
                 Home
               </Nav.Link>
               <Nav.Link
+                style={{ color: "black", fontSize: "20px", fontWeight: "600" }}
+                href="#features"
+              >
+                Features
+              </Nav.Link>
+              {/* Add more Nav.Link components as needed */}
+            </Nav>
+          </Navbar.Collapse>
+        </div>
+      </Container>
+    </Navbar>
+  );
+}
+
+export default NavbarComponent;
+
                 href="#link"
                 style={{ color: "black", fontSize: "20px", fontWeight: "600",  marginRight:"20px" }}
               >

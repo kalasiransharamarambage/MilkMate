@@ -4,7 +4,7 @@ import Yogurt from "../../assets/Img/yogurt.jpg";
 import Curd from "../../assets/Img/yogurt.jpg";
 
 
-function MycartCard({name, image, price, qty, total, remove}) {
+function MycartCard({name, image, price, qty, total, update,delete}) {
   return (
     <>
       <Container fluid >
@@ -18,7 +18,7 @@ function MycartCard({name, image, price, qty, total, remove}) {
             </Col>
             <Col xs={2} style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
                 <h6>{name}</h6>
-              <h3>Yogurt</h3>
+              
             </Col>
             <Col xs={2} style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
               <h3>{price}</h3>

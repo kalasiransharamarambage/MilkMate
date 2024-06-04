@@ -2,9 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
-import yoghurt from "../../assets/Img/yogurt.jpg";
-import curd from "../../assets/Img/curd.png";
-import drink from "../../assets/Img/drink.png";
+
 
 function ProductCard({ img, title }) {
   return (

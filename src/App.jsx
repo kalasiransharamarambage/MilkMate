@@ -7,7 +7,7 @@ import CardDetails from "./Pages/CardDetails-OM/CardDetails";
 import Yogurt from "./Pages/Yogurt-OM/yogurt";
 import MyCart from "./Pages/MyCart-OM/mycart";
 import Help from "./Pages/Help-OM/Help";
-
+import Manage from "./Pages/Manage-OM/Manage";
 
 
 function App() {
@@ -22,6 +22,7 @@ function App() {
           <Route path="/yogurt" element={< Yogurt/>} />
           <Route path="/mycart" element={< MyCart/>} /> 
           <Route path="/Help" element={< Help/>} /> 
+          <Route path="/Manage" element={< Manage/>} /> 
               
         </Route>
       </Routes>

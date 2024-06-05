@@ -39,31 +39,34 @@ function NavbarComponent() {
             <Nav>
               <Nav.Link
                 style={{ color: "black", fontSize: "20px", fontWeight: "600", marginRight:"20px" }}
-                href="#home"
+                href="home"
               >
                 Home
               </Nav.Link>
               <Nav.Link
-                href="#link"
+                href="help"
                 style={{ color: "black", fontSize: "20px", fontWeight: "600",  marginRight:"20px" }}
               >
-                About
+                Help
               </Nav.Link>
               <NavDropdown
                 title="Service"
                 style={{ color: "black", fontSize: "20px", fontWeight: "600" }}
                 id="basic-nav-dropdown"
               >
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
+                <NavDropdown.Item href="animal">Animal Profile</NavDropdown.Item>
+                <NavDropdown.Item href="mainform">
+                  Construction Plan
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
+                <NavDropdown.Item href="delivery1">
+                  Delivery System
+                </NavDropdown.Item>
+                <NavDropdown.Item href="delivery4">
+                  Reviews
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
+                <NavDropdown.Item href="sellerlogin">
+                  Seller Dashboard
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Card, CardMedia, CardContent, Typography, Grid, Container } from '@mui/material';
-import image1 from '../Pages/images/1.jpg';
-import image2 from '../Pages/images/2.jpg';
-import image3 from '../Pages/images/3.jpg';
-import image4 from '../Pages/images/4.jpg';
+import image1 from '../assets/images/1.jpeg';
+import image2 from '../assets/images/2.jpeg';
+import image3 from '../assets/images/3.jpeg';
+import image4 from '../assets/images/4.jpeg';
 
 const products = [
   { id: 1, name: 'Fresh Home Made Milk -450ml', price: '$10', image:image1, rating: 738 },

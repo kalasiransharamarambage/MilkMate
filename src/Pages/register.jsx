@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 import './register.css'
-import googleIcon from './images/google.png';
-import facebookIcon from './images/fb.png'; 
-import appleIcon from './images/apple.png'; 
+import googleIcon from '../../assets/images/google.png';
+import facebookIcon from '../../assets/images/fb.png'; 
+import appleIcon from '../../assets/images/apple.png'; 
 function Register() {
   return (
     <div className="app">

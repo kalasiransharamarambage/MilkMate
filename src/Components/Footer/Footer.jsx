@@ -5,9 +5,6 @@ const footerStyle = {
   backgroundColor: '#9AAFE4',
   padding: '4rem 0',
   color: 'black',
-  margin:'50px',
-  width:'1300px',
-  
 };
 
 const listItemStyle = {
@@ -24,7 +21,7 @@ const linkStyle = {
 const Footer = () => {
   return (
     <footer style={footerStyle}>
-      <Container fluid>
+      <Container>
         <Row>
           <Col lg={3} md={6} className="mb-4 mb-md-0">
             <h5>Quick Links</h5>
@@ -58,7 +55,7 @@ const Footer = () => {
             <Form>
               <Form.Group controlId="formSubscribe">
                 <Form.Control type="email" placeholder="Enter your email" style={{ borderColor: 'black' }} />
-              </Form.Group>
+              </Form.Group><br/>
               <button type="submit" className="btn btn-primary" style={{ backgroundColor: 'black', borderColor: 'black' }}>
                 Subscribe
               </button>
@@ -67,7 +64,7 @@ const Footer = () => {
         </Row>
         <Row className="mt-4">
           <Col className="text-center">
-            <p>&copy; 2023 Your Company. All rights reserved.</p>
+            <p>&copy; 2024 Your Company. All rights reserved.</p>
           </Col>
         </Row>
       </Container>

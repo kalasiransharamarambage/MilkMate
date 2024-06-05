@@ -1,6 +1,6 @@
 // Profile.js
 import React from 'react';
-// import Sidebar from '../Components/Sidebar';
+import Sidebar from '../Components/Sidebar';
 import Dashboard from '../Components/Dasboard';
 import OrderHistory from '../Components/OrderHistory';
 import RecommendedProducts from '../Components/RecommendedProducts';

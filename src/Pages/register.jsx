@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
 import './register.css'
-import googleIcon from '../../assets/images/google.png';
-import facebookIcon from '../../assets/images/fb.png'; 
-import appleIcon from '../../assets/images/apple.png'; 
+import googleIcon from '../assets/images/googleimg.jpg';
+import facebookIcon from '../assets/images/fbimg.png'; 
+import appleIcon from '../assets/images/appleimg.png'; 
+import {Link} from "react-router-dom";
+
 function Register() {
   return (
     <div className="app">
@@ -22,7 +24,8 @@ function Register() {
             <label htmlFor="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Password" />
           </div>
-          <button type="submit" className="login-button">Login</button>
+          <Link to="/home">
+          <button type="submit" className="login-button">Login</button></Link>
         </form>
         <div className="or">OR LOGIN WITH</div>
         <div className="social-login">
@@ -32,7 +35,7 @@ function Register() {
         </div>
         <div className="sign-up">
           <p>Don’t have an account?</p>
-          <a href="#signup">Sign up</a>
+          <a href="registerform">Sign up</a>
         </div>
       </div>
     </div>

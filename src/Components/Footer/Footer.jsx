@@ -3,8 +3,11 @@ import { Container, Row, Col, Form, ListGroup } from 'react-bootstrap';
 
 const footerStyle = {
   backgroundColor: '#9AAFE4',
-  padding: '3rem 0',
+  padding: '4rem 0',
   color: 'black',
+  margin:'50px',
+  width:'1300px',
+  
 };
 
 const listItemStyle = {

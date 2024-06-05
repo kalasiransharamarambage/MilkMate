@@ -69,6 +69,7 @@ const Help = () => {
           </Button>
         </Col>
       </Row>
+     
     </Container>
   );
 };

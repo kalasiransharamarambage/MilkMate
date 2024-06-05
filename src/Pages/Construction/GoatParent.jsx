@@ -2,6 +2,7 @@ import React from 'react';
 import './CowParent.css';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Link} from "react-router-dom";
 
 function GoatParent() {
     return (
@@ -36,9 +37,10 @@ function GoatParent() {
                     <Button className="custom-btn-text-black mx-2" variant="primary" size="md" disabled>
                         Update
                     </Button>
+                    <Link to="/gparentdisplay">
                     <Button className="custom-btn-text-black mx-2" variant="primary" size="md" disabled>
                         Submit
-                    </Button>
+                    </Button></Link>
                 </div>
 
                 <br/><br/><br/><br/>

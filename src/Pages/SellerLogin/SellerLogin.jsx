@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import {Link} from "react-router-dom";
 
 function SellerLogin() {
   const formFields = [
@@ -46,10 +47,10 @@ function SellerLogin() {
                   <Form.Group className="mb-3" controlId="formHorizontalCheck">
                     <Form.Check label="Remember me" />
                   </Form.Group>
-
+<Link to={"/sellerhome"}>
                   <Button type="submit" className="w-100">
                     Sign in
-                  </Button>
+                  </Button></Link>
                 </Form>
               </Col>
             </Row>

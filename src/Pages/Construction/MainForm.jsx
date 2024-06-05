@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './MainForm.css';
+import {Link} from "react-router-dom";
 
 function MainForm() {
     return (
@@ -24,12 +25,14 @@ function MainForm() {
                             <Button variant="primary" size="md" className="mx-2" disabled>
                                 Clear
                             </Button>
+                            <Link to="/goatparent">
                             <Button variant="primary" size="md" className="mx-2" disabled>
                                 Update
-                            </Button>
+                            </Button></Link>
+                            <Link to="/cowparent">
                             <Button variant="primary" size="md" className="mx-2" disabled>
                                 Submit
-                            </Button>
+                            </Button></Link>
                         </div>
                     </Form>
                 </Col>

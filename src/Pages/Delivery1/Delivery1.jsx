@@ -1,5 +1,7 @@
 import React from 'react';
 import deliveryImg from "../../assets/Img/deliveryImg.jpg";
+import Footer from "../../Components/Footer/Footer";
+import {Link} from "react-router-dom";
 
 const deliveries = [
   { title: 'Total Deliveries', count: 6 },
@@ -18,7 +20,7 @@ const App = () => {
       padding: '20px',
       backgroundColor: '#C9E9F2',
       margin: '20px auto',
-      maxWidth: '1100px',
+      maxWidth: '1500px',
     },
     header: {
       position: 'relative',
@@ -126,6 +128,7 @@ const App = () => {
   return (
     <div style={styles.app}>
       <header style={styles.header}>
+     
         <img src={deliveryImg} alt="Delivery" style={styles.headerImage} />
         <h1 style={styles.headerTitle}>Welcome to Delivery Management System</h1>
       </header>
@@ -139,18 +142,23 @@ const App = () => {
               {delivery.title}
             </h2>
             <p style={styles.cardCount}>{delivery.count}</p>
+            <Link to="/delivery3">
             <button
               style={styles.cardButton}
               onMouseOver={(e) => (e.target.style.backgroundColor = '#007BFF', e.target.style.color = 'white')}
               onMouseOut={(e) => (e.target.style.backgroundColor = 'white', e.target.style.color = '#007BFF')}
             >
               View Details
-            </button>
+            </button></Link>
           </div>
         ))}
       </div>
+     
+      <Footer/>
     </div>
+    
   );
+
 };
 
 export default App;

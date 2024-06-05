@@ -12,6 +12,8 @@ import cheese from "../../assets/Img/cheese.jpg";
 import Butter from "../../assets/Img/Butter.png";
 import MilkPowder from "../../assets/Img/milkPowder.jpg";
 import drink from "../../assets/Img/yogurt.jpg";
+import Footer from "../../Components/Footer/Footer";
+import {Link} from "react-router-dom";
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -87,6 +89,7 @@ function Dashboard() {
 
                     </h4>
                     <div style={{ display: "flex", justifyContent: "center" }}>
+                    <Link to="/yogurt"> 
                         <Button
                             style={{
                                 marginTop: "30px",
@@ -99,7 +102,7 @@ function Dashboard() {
                             variant="primary"
                         >
                             Search
-                        </Button>
+                        </Button></Link>
                     </div>
 
                     <div style={{ marginTop: "200px", marginBottom: "40px" }}></div>
@@ -115,7 +118,9 @@ function Dashboard() {
                     ))}
                 </Row>
             </Container>
+            <Footer/>
         </div>
+      
     );
 }
 

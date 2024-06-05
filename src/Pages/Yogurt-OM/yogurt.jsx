@@ -2,6 +2,7 @@ import React from 'react';
 import { Image, Row, Col, Container } from 'react-bootstrap';
 import yoghurt from "../../assets/Img/drink.png";
 import Button from 'react-bootstrap/Button';
+import {Link} from "react-router-dom";
 
 function Yogurt() { // Corrected component name to follow standard naming conventions
     return (
@@ -26,14 +27,17 @@ function Yogurt() { // Corrected component name to follow standard naming conven
                 </Col>
                 <Row>
                     <Col style={{ display: "flex", justifyContent: "start" }}>
+                        <Link to="/orderform">
                         <Button variant="outline-primary" type="submit">
                             Order Now
-                        </Button>
+                        </Button></Link>
                     </Col>
                     <Col style={{ display: "flex", justifyContent: "end" }}>
+                        
+                        <Link to={"/mycart"}>
                         <Button variant="outline-primary" type="submit">
                             Add to Cart
-                        </Button>
+                        </Button></Link>
                     </Col>
                 </Row>
                 <Row style={{ padding: "20px", backgroundColor: "white", borderRadius: "5px" }}>

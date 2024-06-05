@@ -1,7 +1,6 @@
 import React from 'react';
 import { Col, Row, Form, Button, Card } from 'react-bootstrap';
-import { MdDelete } from "react-icons/md";
-import { FaEdit } from "react-icons/fa";
+
 
 function SellerPayment() {
   const formFields = [

@@ -2,6 +2,7 @@ import React from 'react';
 import './CowParent.css';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Link} from "react-router-dom";
 
 function CowParent() {
     return (
@@ -34,9 +35,10 @@ function CowParent() {
                         <Button className="custom-btn-text-black btn btn-primary m-2" size="md" disabled>
                             Update
                         </Button>
+                        <Link to="/cparentdisplay">
                         <Button className="custom-btn-text-black btn btn-primary m-2" size="md" disabled>
                             Submit
-                        </Button>
+                        </Button></Link>
                     </div>
 
                     <br /><br /><br /><br /><br />

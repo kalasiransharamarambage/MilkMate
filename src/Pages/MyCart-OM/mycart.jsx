@@ -50,7 +50,7 @@ function MyCart() {
   ];
 
   return (
-    <Container fluid>
+    <Container fluid style={{alignContent:'center'}}>
       <Row>
         <Col xs={8}>
           {SAMPLE_DATA.map((item) => (

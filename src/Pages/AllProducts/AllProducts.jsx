@@ -5,6 +5,7 @@ import { MDBContainer, MDBTable, MDBTableHead, MDBTableBody, MDBBadge, MDBBtn } 
 import yogurt from "../../assets/Img/yogurt.jpg";
 import milkPowder from "../../assets/Img/milkPowder.jpg";
 import cheese from "../../assets/Img/cheese.jpg";
+import {Link} from "react-router-dom";
 
 const products = [
   { id: 1, name: "Yogurt", img: yogurt, status: "Unpayed", quantity: 100 },
@@ -43,9 +44,10 @@ function AllProducts() {
           </td>
           {filterStatus === 'Unpayed' && (
             <td>
+              <Link to="/sellerpayment">
               <MDBBtn className='fw-bold' color='success' rounded size='sm' rippleColor='dark'>
                 Pay Now
-              </MDBBtn>
+              </MDBBtn></Link>
             </td>
           )}
         </tr>
@@ -177,6 +179,7 @@ function AllProducts() {
               </MDBTable>
             </div>
           </div>
+          <Link to="/sellerpayment">
           <MDBBtn
             className='fw-bold'
             color='success'
@@ -186,7 +189,7 @@ function AllProducts() {
             style={{ display: 'block', margin: '30px auto 0' }}
           >
             Pay All
-          </MDBBtn>
+          </MDBBtn></Link>
         </MDBContainer>
       </Tab>
 

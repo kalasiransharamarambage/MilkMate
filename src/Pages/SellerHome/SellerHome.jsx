@@ -9,6 +9,8 @@ import Button from "react-bootstrap/Button";
 import { MdAppRegistration, MdPayment, MdSecurity } from "react-icons/md";
 import { FaPersonRunning, FaRegistered, FaList } from "react-icons/fa6";
 import { IoInformationCircle } from "react-icons/io5";
+import Footer from "../../Components/Footer/Footer";
+import {Link} from "react-router-dom";
 
 const cardData = [
   {
@@ -119,9 +121,11 @@ const cardData = [
           <br />
           <span style={{ fontSize: '3rem' }}>Join with us</span>
           <br />
-          <Button variant="outline-primary" className="mt-3">Add Products</Button>
+          <Link to="/selleraddproducts">
+          <Button variant="outline-primary" className="mt-3">Add Products</Button></Link>
           <br />
-          <Button variant="outline-primary" className="mt-3">All Products</Button>
+          <Link to="/sellerallproducts">
+          <Button variant="outline-primary" className="mt-3">All Products</Button></Link>
         </Col>
       </Row>
     ),
@@ -180,7 +184,9 @@ function SellerHome() {
         <Card key={card.id} style={card.style}>
           {card.content}
         </Card>
+      
       ))}
+       <Footer/>
     </>
   );
 }

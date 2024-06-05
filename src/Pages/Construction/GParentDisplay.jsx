@@ -1,6 +1,7 @@
 import React from 'react';
 import './CParentDisplay.css';
 import Button from 'react-bootstrap/Button';
+import {Link} from "react-router-dom";
 
 
 function GParentDisplay() {

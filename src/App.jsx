@@ -15,6 +15,22 @@ import Sellerpayment from "./Pages/SellerPayment/SellerPayment.jsx";
 import Delivery1 from "./Pages/Delivery1/Delivery1";
 import Delivery3 from "./Pages/Delivery3/Delivery3";
 import Delivery4 from "./Pages/Delivery4/Delivery4";
+import AddAnimal from "./Pages/AnimalDetails/AddAnimal.jsx";
+import Animal from "./Pages/AnimalDetails/Animal.jsx";
+import Animal2 from "./Pages/AnimalDetails/Animal2.jsx";
+import AnimalProfile from "./Pages/AnimalDetails/AnimalProfile.jsx";
+import Search from "./Pages/AnimalDetails/Search.jsx";
+import Mainform from "./Pages/Construction/MainForm.jsx";
+import Cowparent from "./Pages/Construction/CowParent.jsx";
+import Goatparent from "./Pages/Construction/GoatParent.jsx";
+import CChildDisplay from "./Pages/Construction/CChildDisplay.jsx";
+import CParentDisplay from "./Pages/Construction/CParentDisplay.jsx";
+import GChildDisplay from "./Pages/Construction/GChildDisplay.jsx"
+import GParentDisplay from "./Pages/Construction/GParentDisplay.jsx"
+// import RegisterForm from "./Pages/register-form.jsx"
+// import Register from "./Pages/register.jsx"
+// import Profile from "./Pages/profile.jsx"
+
 
 function App() {
   return (
@@ -35,6 +51,24 @@ function App() {
           <Route path="/delivery1" element={<Delivery1 />} />
           <Route path="/delivery3" element={<Delivery3 />} />
           <Route path="/delivery4" element={<Delivery4 />} />
+          <Route path="/addanimal" element={<AddAnimal/>} />
+          <Route path="/animal" element={<Animal />} />
+          <Route path="/animal2" element={<Animal2/>} />
+          <Route path="/animalprofile" element={<AnimalProfile />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/mainform" element= {<Mainform/>}/> 
+        <Route path="/cowparent" element= {<Cowparent/>}/> 
+        <Route path="/goatparent" element= {<Goatparent/>}/> 
+        <Route path="/cchilddisplay" element= {<CChildDisplay/>}/> 
+        <Route path="/cparentdisplay" element= {<CParentDisplay/>}/>
+        <Route path="/gchilddisplay" element= {<GChildDisplay/>}/> 
+        <Route path="/gparentdisplay" element= {<GParentDisplay/>}/>    
+        
+        {/* <Route path="/registerform" element= {<RegisterForm/>}/>    
+        <Route path="/register" element= {<Register/>}/>    
+        <Route path="/profile" element= {<Profile/>}/>      */}
+
+
         </Route>
       </Routes>
     </Router>

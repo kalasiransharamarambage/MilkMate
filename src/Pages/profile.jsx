@@ -1,11 +1,10 @@
 // Profile.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Sidebar from '../components/sidebar';
-import Dashboard from '../components/Dasboard';
-import OrderHistory from '../components/OrderHistory';
-import RecommendedProducts from '../components/RecommendedProducts';
-import Pagedrawer from '../components/PageDrawer';
+import Sidebar from '../Components/Sidebar';
+import Dashboard from '../Components/Dasboard';
+import OrderHistory from '../Components/OrderHistory';
+import RecommendedProducts from '../Components/RecommendedProducts';
+import Pagedrawer from '../Components/PageDrawer';
 import './profile.css'
 
 export default function Profile() {

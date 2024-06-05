@@ -27,9 +27,9 @@ import CChildDisplay from "./Pages/Construction/CChildDisplay.jsx";
 import CParentDisplay from "./Pages/Construction/CParentDisplay.jsx";
 import GChildDisplay from "./Pages/Construction/GChildDisplay.jsx"
 import GParentDisplay from "./Pages/Construction/GParentDisplay.jsx"
-// import RegisterForm from "./Pages/register-form.jsx"
-// import Register from "./Pages/register.jsx"
-// import Profile from "./Pages/profile.jsx"
+import RegisterForm from "./Pages/register-form.jsx"
+import Register from "./Pages/register.jsx"
+import Profile from "./Pages/profile.jsx"
 
 
 function App() {
@@ -64,9 +64,9 @@ function App() {
         <Route path="/gchilddisplay" element= {<GChildDisplay/>}/> 
         <Route path="/gparentdisplay" element= {<GParentDisplay/>}/>    
         
-        {/* <Route path="/registerform" element= {<RegisterForm/>}/>    
+         <Route path="/registerform" element= {<RegisterForm/>}/>    
         <Route path="/register" element= {<Register/>}/>    
-        <Route path="/profile" element= {<Profile/>}/>      */}
+        <Route path="/profile" element= {<Profile/>}/>      
 
 
         </Route>

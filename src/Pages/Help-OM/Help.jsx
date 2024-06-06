@@ -64,7 +64,7 @@ const Help = () => {
 
       <Row className="justify-content-center mt-5">
         <Col md={2}>
-          <Button variant="secondary" className="w-100">
+          <Button variant="primary" className="w-100" style={{marginBottom:"50px"}}>
             Back
           </Button>
         </Col>

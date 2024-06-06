@@ -64,7 +64,7 @@ function NavbarComponent() {
               style={{ color: "black", fontSize: "20px", fontWeight: "600" }}
               id="basic-nav-dropdown"
             >
-              <NavDropdown.Item href="profile">User Profile</NavDropdown.Item>
+              <NavDropdown.Item href="profile">Admin Dashboard</NavDropdown.Item>
               <NavDropdown.Item href="animal">Animal Profile</NavDropdown.Item>
               <NavDropdown.Item href="mainform">
                 Construction Plan

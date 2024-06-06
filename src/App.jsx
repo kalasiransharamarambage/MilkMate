@@ -62,14 +62,16 @@ function App() {
         <Route path="/cchilddisplay" element= {<CChildDisplay/>}/> 
         <Route path="/cparentdisplay" element= {<CParentDisplay/>}/>
         <Route path="/gchilddisplay" element= {<GChildDisplay/>}/> 
-        <Route path="/gparentdisplay" element= {<GParentDisplay/>}/>    
-        
-         <Route path="/registerform" element= {<RegisterForm/>}/>    
+        <Route path="/gparentdisplay" element= {<GParentDisplay/>}/> 
+        <Route path="/registerform" element= {<RegisterForm/>}/>    
         <Route path="/register" element= {<Register/>}/>    
+        
+       
+        </Route>
+          
         <Route path="/profile" element= {<Profile/>}/>      
 
 
-        </Route>
       </Routes>
     </Router>
   );

@@ -24,7 +24,7 @@ const sidebarItems = [
 
 const Drawer = styled(MuiDrawer)(({ theme }) => ({
   '& .MuiDrawer-paper': {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#9AAFE4',
     color: '#000',
     width: '240px',
     display: 'flex',

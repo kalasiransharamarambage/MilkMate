@@ -15,6 +15,7 @@ import drink from "../../assets/Img/yogurt.jpg";
 import Footer from "../../Components/Footer/Footer";
 import {Link} from "react-router-dom";
 
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
@@ -62,6 +63,13 @@ function Dashboard() {
 
     return (
         <div>
+            <Row>
+            <h1 className="text-center mb-4" style={{ fontSize: "55px",color:"black" ,marginTop:"20px"}}>
+        Milk Mate Products
+      </h1>
+            </Row>
+         
+           
             <Row>
                 <Col data-aos="fade-right" style={{ display: "flex", justifyContent: "end" }}>
                     <Image src={DashboardImg} style={{ width: "auto", height: "80vh" }} />

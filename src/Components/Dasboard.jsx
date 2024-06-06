@@ -44,14 +44,15 @@ const InfoCard = styled(Card)(({ theme }) => ({
 const BillingCard = styled(Card)(({ theme }) => ({
   border: '1px solid #d1d1d1',
   textAlign: 'left',
-  height: '100%',  // Ensure it takes full height of the Grid item
+  height: '100%', 
+  // Ensure it takes full height of the Grid item
 }));
 
 const Dashboard = () => {
   return (
-    <Container sx={{ minHeight: '100vh' }}>
-      <Box p={4}>
-        <UserInfo>
+    <Container sx={{ minHeight: '100vh',width:'1000px',marginLeft:'5px' }}>
+      <Box p={4} >
+        <UserInfo >
           <Avatar alt="John" sx={{ width: 64, height: 64, backgroundColor: 'grey' }}>J</Avatar>
           <UserDetails>
             <Typography variant="h5">Hello, John</Typography>

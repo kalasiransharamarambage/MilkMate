@@ -2,7 +2,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import './register-form.css';
-import {Link} from "react-router-dom";
+
 
 const RegistrationForm = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -64,8 +64,8 @@ const RegistrationForm = () => {
           <label>I agree to terms and conditions</label>
           {errors.terms && <span>You must agree to the terms</span>}
         </div>
-<Link to="/register">
-        <button className="button1" type="submit">Register</button></Link>
+
+        <button className="button1" type="submit">Register</button>
       </form>
     </div>
     </div>

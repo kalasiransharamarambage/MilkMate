@@ -24,8 +24,8 @@ function Register() {
             <label htmlFor="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Password" />
           </div>
-          <Link to="/home">
-          <button type="submit" className="login-button">Login</button></Link>
+         
+          <button type="submit" className="login-button">Login</button>
         </form>
         <div className="or">OR LOGIN WITH</div>
         <div className="social-login">

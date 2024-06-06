@@ -6,7 +6,20 @@ import './register-form.css';
 
 const RegistrationForm = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
+
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post('http://localhost:5000/api/register', data);
+      console.log(response.data);
+  
+      // Redirect to the user page using the received user ID
+      window.location.href = `/user/${response.data.userId}`; // Modify URL structure as needed
+    } catch (error) {
+      console.error('There was an error submitting the form!', error);
+    }
+  };
+  
+
 
   return (
     <div className='backgroundimage'>

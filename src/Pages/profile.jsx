@@ -1,4 +1,3 @@
-// Profile.js
 import React from 'react';
 import Sidebar from '../Components/sidebar';
 import Dashboard from '../Components/Dasboard';

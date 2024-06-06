@@ -30,6 +30,11 @@ import GParentDisplay from "./Pages/Construction/GParentDisplay.jsx"
 import RegisterForm from "./Pages/register-form.jsx"
 import Register from "./Pages/register.jsx"
 import Profile from "./Pages/profile.jsx"
+import AdminDashboard from "./Pages/AdminDashboard.jsx";
+import AdminLogin from "./Pages/admin-login.jsx";
+
+
+
 
 
 function App() {
@@ -64,7 +69,10 @@ function App() {
         <Route path="/gchilddisplay" element= {<GChildDisplay/>}/> 
         <Route path="/gparentdisplay" element= {<GParentDisplay/>}/> 
         <Route path="/registerform" element= {<RegisterForm/>}/>    
-        <Route path="/register" element= {<Register/>}/>    
+        <Route path="/register" element= {<Register/>}/>   
+        <Route path="/admindashboard" element= {<AdminDashboard/>}/> 
+        <Route path="/adminlogin" element= {<AdminLogin/>}/> 
+
         
        
         </Route>

@@ -13,18 +13,16 @@ import StarIcon from '@mui/icons-material/Star';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 const sidebarItems = [
-  { text: 'Dashboard', icon: <DashboardIcon />, path: '/dashboard' },
-  { text: 'Order History', icon: <HistoryIcon />, path: '/order-history' },
+  { text: 'Dashboard', icon: <DashboardIcon />, path: '/profile' },
   { text: 'Track Order', icon: <LocalShippingIcon />, path: '/track-order' },
   { text: 'Shopping Cart', icon: <ShoppingCartIcon />, path: '/shopping-cart' },
   { text: 'Cards & Address', icon: <CreditCardIcon />, path: '/cards-address' },
-  { text: 'Recommended', icon: <StarIcon />, path: '/recommended-products' },
-  { text: 'Log-out', icon: <ExitToAppIcon />, path: '/logout' }
+   { text: 'Log-out', icon: <ExitToAppIcon />, path: '/logout' }
 ];
 
 const Drawer = styled(MuiDrawer)(({ theme }) => ({
   '& .MuiDrawer-paper': {
-    backgroundColor: '#9AAFE4',
+    backgroundColor: '#f5f5f5',
     color: '#000',
     width: '240px',
     display: 'flex',
@@ -34,7 +32,7 @@ const Drawer = styled(MuiDrawer)(({ theme }) => ({
   },
 }));
 
-const sidebar = () => {
+const Sidebar = () => {
   return (
     <Drawer variant="permanent" anchor="left">
       <List>
@@ -49,4 +47,4 @@ const sidebar = () => {
   );
 };
 
-export default sidebar;
+export default Sidebar;

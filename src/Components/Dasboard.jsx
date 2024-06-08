@@ -1,130 +1,80 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import {
   Avatar,
   Box,
   Button,
   Card,
   CardContent,
-  Container,
   Grid,
   Typography,
 } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import HistoryIcon from '@mui/icons-material/History';
-import StarIcon from '@mui/icons-material/Star';
-
-const UserInfo = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  marginBottom: theme.spacing(2),
-  marginLeft: '350px',
-}));
-
-const UserDetails = styled(Box)(({ theme }) => ({
-  marginLeft: theme.spacing(2),
-}));
-
-const StatCard = styled(Card)(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  padding: theme.spacing(2),
-  backgroundColor: '#f0f4ff',
-  textAlign: 'center',
-  height: '100%',
-}));
-
-const InfoCard = styled(Card)(({ theme }) => ({
-  border: '1px solid #d1d1d1',
-  textAlign: 'left',
-  height: '100%',  // Ensure it takes full height of the Grid item
-}));
-
-const BillingCard = styled(Card)(({ theme }) => ({
-  border: '1px solid #d1d1d1',
-  textAlign: 'left',
-  height: '100%', 
-  // Ensure it takes full height of the Grid item
-}));
+import EditIcon from '@mui/icons-material/Edit';
 
 const Dashboard = () => {
+  const location = useLocation();
+  const user = location.state?.user;
+  const [userData, setUserData] = useState(user);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!userData) {
+      const fetchUserData = async () => {
+        try {
+          const response = await axios.get(`http://localhost:5000/api/user/${user.id}`);
+          setUserData(response.data);
+        } catch (error) {
+          console.error('Error fetching user data:', error);
+        }
+      };
+      fetchUserData();
+    }
+  }, [userData, user]);
+
+  const handleEditAccount = () => {
+    navigate('/edit', { state: { user: userData } });
+  };
+
+  if (!userData) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <Container sx={{ minHeight: '100vh',width:'1000px',marginLeft:'5px' }}>
-      <Box p={4} >
-        <UserInfo >
-          <Avatar alt="John" sx={{ width: 64, height: 64, backgroundColor: 'grey' }}>J</Avatar>
-          <UserDetails>
-            <Typography variant="h5">Hello, John</Typography>
-            <Typography variant="body1">
-              From your account dashboard, you can easily check & view your{' '}
-              <Typography component="span" color="primary">Recent Orders</Typography>, manage your{' '}
-              <Typography component="span" color="primary">Shipping and Billing Addresses</Typography> and edit your{' '}
-              <Typography component="span" color="primary">Password</Typography> and{' '}
-              <Typography component="span" color="primary">Account Details</Typography>.
-            </Typography>
-          </UserDetails>
-        </UserInfo>
-
-        <Grid container spacing={2} sx={{ marginLeft: '10%' }}>
-          <Grid item xs={12} md={6}>
-            <InfoCard sx={{ width: '100%' }}>
-              <CardContent>
-                <Typography variant="h6">ACCOUNT INFO</Typography>
-                <Typography variant="body1">John</Typography>
-                <Typography variant="body1">123, Anywhere Street</Typography>
-                <Typography variant="body1">Email: johndoe@gmail.com</Typography>
-                <Typography variant="body1">Phone: +94 xxxxxxxxxx</Typography>
-                <Button variant="outlined" sx={{ mt: 2, width: '100%' }}>EDIT ACCOUNT</Button>
-              </CardContent>
-            </InfoCard>
-          </Grid>
-
-          <Grid item xs={12} md={6}>
-            <BillingCard sx={{ width: '100%' }}>
-              <CardContent>
-                <Typography variant="h6">BILLING ADDRESS</Typography>
-                <Typography variant="body1">John Doe</Typography>
-                <Typography variant="body1">123 Anywhere Street</Typography>
-                <Typography variant="body1">Phone Number: +94 xxxx xxxx</Typography>
-                <Typography variant="body1">Email: johndoe@gmail.com</Typography>
-                <Button variant="outlined" sx={{ mt: 2, width: '100%' }}>EDIT ADDRESS</Button>
-              </CardContent>
-            </BillingCard>
-          </Grid>
-
-          <Grid item xs={12} md={4}>
-            <StatCard>
-              <Box>
-                <LocalShippingIcon color="primary" fontSize="large" />
-                <Typography variant="h4">10</Typography>
-                <Typography variant="body1">Total Orders</Typography>
-              </Box>
-            </StatCard>
-          </Grid>
-
-          <Grid item xs={12} md={4}>
-            <StatCard>
-              <Box>
-                <HistoryIcon color="primary" fontSize="large" />
-                <Typography variant="h4">05</Typography>
-                <Typography variant="body1">Pending Orders</Typography>
-              </Box>
-            </StatCard>
-          </Grid>
-
-          <Grid item xs={12} md={4}>
-            <StatCard>
-              <Box>
-                <StarIcon color="primary" fontSize="large" />
-                <Typography variant="h4">20</Typography>
-                <Typography variant="body1">Completed Orders</Typography>
-              </Box>
-            </StatCard>
-          </Grid>
-        </Grid>
+    <Box className="dashboard-container">
+      <Box className="user-info" display="flex" alignItems="center" mb={3}>
+        <Avatar alt={userData.name} src={userData.avatar} sx={{ width: 64, height: 64 }}>
+          {userData.name[0]}
+        </Avatar>
+        <Box className="user-details" ml={2}>
+          <Typography variant="h5">{`Hello, ${userData.name}`}</Typography>
+          <Typography variant="body1">
+            From your account dashboard, you can easily check & view your{' '}
+            <Typography component="span" color="primary">Recent Orders</Typography>, manage your{' '}
+            <Typography component="span" color="primary">Shipping and Billing Addresses</Typography> and edit your{' '}
+            <Typography component="span" color="primary">Password</Typography> and{' '}
+            <Typography component="span" color="primary">Account Details</Typography>.
+          </Typography>
+        </Box>
       </Box>
-    </Container>
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={6}>
+          <Card className="info-card">
+            <CardContent>
+              <Typography variant="h6">ACCOUNT INFO</Typography>
+              <Typography variant="body1">{userData.name}</Typography>
+              <Typography variant="body1">{userData.streetName}, {userData.city}, {userData.district}</Typography>
+              <Typography variant="body1">Email: {userData.email}</Typography>
+              <Typography variant="body1">Phone: {userData.phone}</Typography>
+              <Button variant="outlined" className="button" onClick={handleEditAccount}>
+                <EditIcon />
+                Edit Account
+              </Button>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 

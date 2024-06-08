@@ -32,7 +32,6 @@ import Register from "./Pages/register.jsx"
 import Profile from "./Pages/profile.jsx"
 import AdminDashboard from "./Pages/AdminDashboard.jsx";
 import AdminLogin from "./Pages/admin-login.jsx";
-import ProductApproval from "./Components/ProductApproval.jsx";
 import UserManagement from "./Pages/UserManagement/UserManagement.jsx";
 
 
@@ -74,7 +73,6 @@ function App() {
         <Route path="/register" element= {<Register/>}/>   
         <Route path="/admindashboard" element= {<AdminDashboard/>}/> 
         <Route path="/adminlogin" element= {<AdminLogin/>}/> 
-        <Route path="/productapproval" element= {<ProductApproval/>}/> 
         <Route path="/usermanagement" element= {<UserManagement/>}/> 
 
 

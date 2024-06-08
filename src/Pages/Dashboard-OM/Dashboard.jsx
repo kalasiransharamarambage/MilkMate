@@ -97,20 +97,22 @@ function Dashboard() {
 
                     </h4>
                     <div style={{ display: "flex", justifyContent: "center" }}>
+                        <Row>
+                            <Col>
                     <Link to="/yogurt"> 
-                        <Button
-                            style={{
-                                marginTop: "30px",
-                                padding: "10px",
-                                width: "60vh",
-                                fontSize: "22px",
-                                fontWeight: "bold",
-                                borderRadius: "30px",
-                            }}
-                            variant="primary"
-                        >
-                            Search
+                       
+                           <Button variant="outline-primary" style={{width:"200px"}}>
+                            Register as a Customer
                         </Button></Link>
+                       
+                        </Col>
+                        <Col>
+                       
+                             <Button variant="outline-primary" style={{width:"200px"}}>
+                             Register as a Seller
+                         </Button>
+                         </Col>
+                         </Row>
                     </div>
 
                     <div style={{ marginTop: "200px", marginBottom: "40px" }}></div>

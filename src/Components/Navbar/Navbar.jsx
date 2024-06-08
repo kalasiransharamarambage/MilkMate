@@ -40,9 +40,15 @@ function NavbarComponent() {
             <Nav.Link
               style={{
                 color: "black",
-                fontSize: "20px",
+                fontSize: "18px",
                 fontWeight: "600",
-               marginLeft:"600px"
+               marginLeft:"500px",
+               borderRadius:"10px",
+               backgroundColor:"#6A8FEF",
+               color:"white",
+               
+               cursor:"pointer",
+               marginRight:"20px"
               }}
               href="home"
             >
@@ -52,16 +58,41 @@ function NavbarComponent() {
               href="help"
               style={{
                 color: "black",
-                fontSize: "20px",
+                fontSize: "18px",
                 fontWeight: "600",
                 marginRight: "20px",
+                borderRadius:"10px",
+                backgroundColor:"#6A8FEF",
+                color:"white",
+               
+                cursor:"pointer"
               }}
             >
-              Help
+             About Us
+            </Nav.Link>
+            <Nav.Link
+              href="help"
+              style={{
+                color: "black",
+                fontSize: "18px",
+                fontWeight: "600",
+                marginRight: "20px",
+                borderRadius:"10px",
+                backgroundColor:"#6A8FEF",
+                color:"white",
+               
+                cursor:"pointer"
+              }}
+            >
+             Contact Us
             </Nav.Link>
             <NavDropdown
               title="Service"
-              style={{ color: "black", fontSize: "20px", fontWeight: "600" }}
+              style={{  fontSize: "18px", fontWeight: "600", borderRadius:"10px",
+                backgroundColor:"#6A8FEF",
+                color:"white",
+               
+                cursor:"pointer" }}
               id="basic-nav-dropdown"
             >
               <NavDropdown.Item href="profile">Admin Dashboard</NavDropdown.Item>
@@ -82,6 +113,7 @@ function NavbarComponent() {
               <Button variant="outline-primary">Sign Up</Button>
             </Link>
           </div>
+          
         </Navbar.Collapse>
       </Container>
     </Navbar>

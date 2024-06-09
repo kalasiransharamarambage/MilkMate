@@ -1,12 +1,12 @@
 import React from "react";
 import { Image } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
+import LinkContainer from "react-bootstrap/LinkContainer";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Navbar from "react-bootstrap/Navbar";
 import CowLogo from "../../assets/Img/cow.png";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
 
 function NavbarComponent() {
   return (
@@ -37,83 +37,89 @@ function NavbarComponent() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link
-              style={{
-              
-                fontSize: "18px",
-                fontWeight: "600",
-               marginLeft:"500px",
-               borderRadius:"10px",
-               backgroundColor:"#6A8FEF",
-               color:"white",
-               
-               cursor:"pointer",
-               marginRight:"20px"
-              }}
-              href="home"
-            >
-              Home
-            </Nav.Link>
-            <Nav.Link
-              href="help"
-              style={{
-                
-                fontSize: "18px",
-                fontWeight: "600",
-                marginRight: "20px",
-                borderRadius:"10px",
-                backgroundColor:"#6A8FEF",
-                color:"white",
-               
-                cursor:"pointer"
-              }}
-            >
-             About Us
-            </Nav.Link>
-            <Nav.Link
-              href="help"
-              style={{
-               
-                fontSize: "18px",
-                fontWeight: "600",
-                marginRight: "20px",
-                borderRadius:"10px",
-                backgroundColor:"#6A8FEF",
-                color:"white",
-               
-                cursor:"pointer"
-              }}
-            >
-             Contact Us
-            </Nav.Link>
+            <LinkContainer to="/home">
+              <Nav.Link
+                style={{
+                  fontSize: "18px",
+                  fontWeight: "600",
+                  borderRadius: "10px",
+                  backgroundColor: "#6A8FEF",
+                  color: "white",
+                  cursor: "pointer",
+                  marginRight: "20px",
+                }}
+              >
+                Home
+              </Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/about">
+              <Nav.Link
+                style={{
+                  fontSize: "18px",
+                  fontWeight: "600",
+                  borderRadius: "10px",
+                  backgroundColor: "#6A8FEF",
+                  color: "white",
+                  cursor: "pointer",
+                  marginRight: "20px",
+                }}
+              >
+                About Us
+              </Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/contact">
+              <Nav.Link
+                style={{
+                  fontSize: "18px",
+                  fontWeight: "600",
+                  borderRadius: "10px",
+                  backgroundColor: "#6A8FEF",
+                  color: "white",
+                  cursor: "pointer",
+                  marginRight: "20px",
+                }}
+              >
+                Contact Us
+              </Nav.Link>
+            </LinkContainer>
             <NavDropdown
               title="Service"
-              style={{  fontSize: "18px", fontWeight: "600", borderRadius:"10px",
-                backgroundColor:"#6A8FEF",
-                color:"white",
-               
-                cursor:"pointer" }}
               id="basic-nav-dropdown"
+              style={{
+                fontSize: "18px",
+                fontWeight: "600",
+                borderRadius: "10px",
+                backgroundColor: "#6A8FEF",
+                color: "white",
+                cursor: "pointer",
+              }}
             >
-              <NavDropdown.Item href="profile">Admin Dashboard</NavDropdown.Item>
-              <NavDropdown.Item href="animal">Animal Profile</NavDropdown.Item>
-              <NavDropdown.Item href="mainform">
-                Construction Plan
-              </NavDropdown.Item>
-              <NavDropdown.Item href="delivery1">Delivery System</NavDropdown.Item>
-              <NavDropdown.Item href="delivery4">Reviews</NavDropdown.Item>
+              <LinkContainer to="/profile">
+                <NavDropdown.Item>Admin Dashboard</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to="/animal">
+                <NavDropdown.Item>Animal Profile</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to="/mainform">
+                <NavDropdown.Item>Construction Plan</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to="/delivery1">
+                <NavDropdown.Item>Delivery System</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to="/delivery4">
+                <NavDropdown.Item>Reviews</NavDropdown.Item>
+              </LinkContainer>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="sellerlogin">
-                Seller Dashboard
-              </NavDropdown.Item>
+              <LinkContainer to="/sellerlogin">
+                <NavDropdown.Item>Seller Dashboard</NavDropdown.Item>
+              </LinkContainer>
             </NavDropdown>
           </Nav>
           <div className="d-flex align-items-center">
-            <Link to="/registerform">
+            <LinkContainer to="/registerform">
               <Button variant="outline-primary">Sign Up</Button>
-            </Link>
+            </LinkContainer>
           </div>
-          
         </Navbar.Collapse>
       </Container>
     </Navbar>

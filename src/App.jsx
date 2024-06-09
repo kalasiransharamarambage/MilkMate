@@ -27,7 +27,7 @@ import CChildDisplay from "./Pages/Construction/CChildDisplay.jsx";
 import CParentDisplay from "./Pages/Construction/CParentDisplay.jsx";
 import GChildDisplay from "./Pages/Construction/GChildDisplay.jsx"
 import GParentDisplay from "./Pages/Construction/GParentDisplay.jsx"
-import RegisterForm from "./Pages/register-form.jsx"
+import RegisterForm from "./Pages/RegistrationForm.jsx"
 import Register from "./Pages/register.jsx"
 import Profile from "./Pages/profile.jsx"
 import AdminDashboard from "./Pages/AdminDashboard.jsx";

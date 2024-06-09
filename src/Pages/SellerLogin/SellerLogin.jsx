@@ -1,64 +1,181 @@
-import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Card from "react-bootstrap/Card";
-import Image from "react-bootstrap/Image";
-import milkproducts from "../../assets/Img/milkproducts.jpg";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import {Link} from "react-router-dom";
+// import React from "react";
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import Card from "react-bootstrap/Card";
+// import Image from "react-bootstrap/Image";
+// import milkproducts from "../../assets/Img/milkproducts.jpg";
+// import Container from "react-bootstrap/Container";
+// import Row from "react-bootstrap/Row";
+// import Col from "react-bootstrap/Col";
+// import Button from "react-bootstrap/Button";
+// import Form from "react-bootstrap/Form";
+// import {Link} from "react-router-dom";
 
-function SellerLogin() {
-  const formFields = [
-    { controlId: "formHorizontalEmail", label: "Email", type: "email", placeholder: "Email" },
-    { controlId: "formHorizontalPassword", label: "Password", type: "password", placeholder: "Password" }
-  ];
+// function SellerLogin() {
+//   const formFields = [
+//     { controlId: "formHorizontalEmail", label: "Email", type: "email", placeholder: "Email" },
+//     { controlId: "formHorizontalPassword", label: "Password", type: "password", placeholder: "Password" }
+//   ];
+
+//   return (
+//     <Container className="my-4">
+//       <h1 className="text-center mb-4" style={{ fontSize: "55px" }}>
+//         WELCOME TO SELLER DASHBOARD
+//       </h1>
+//       <Row className="justify-content-center">
+//         <Col lg={8} md={10} sm={12}>
+//           <Card className="p-4 shadow-sm" style={{ border: "none", backgroundColor: "#C9E9F2" }}>
+//             <Row>
+//               <Col md={6}>
+//                 <Image 
+//                   src={milkproducts} 
+//                   alt="Milk products" 
+//                   style={{ width: "100%", height: "auto", borderRadius: "10px" }} 
+//                 />
+//               </Col>
+//               <Col md={6}>
+//                 <h2 className="text-center mb-4" style={{ fontSize: "30px", color: "#0B4EFC", fontFamily: "Arial, sans-serif" }}>
+//                   Seller Login
+//                 </h2>
+//                 <Form>
+//                   {formFields.map((field, index) => (
+//                     <Form.Group className="mb-3" controlId={field.controlId} key={index}>
+//                       <Form.Label>{field.label}</Form.Label>
+//                       <Form.Control type={field.type} placeholder={field.placeholder} />
+//                     </Form.Group>
+//                   ))}
+
+//                   <Form.Group className="mb-3" controlId="formHorizontalCheck">
+//                     <Form.Check label="Remember me" />
+//                   </Form.Group>
+// <Link to={"/sellerhome"}>
+//                   <Button type="submit" className="w-100">
+//                     Sign in
+//                   </Button></Link>
+//                 </Form>
+//               </Col>
+//             </Row>
+//           </Card>
+//         </Col>
+//       </Row>
+//     </Container>
+//   );
+// }
+
+// export default SellerLogin;
+
+
+
+import React, { useState } from "react";
+import { Container, Row, Card,Col, Form, Button, Image } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
+// import "./LoginPage.css";
+ import milkproducts from "../../assets/Img/milkproducts.jpg";
+
+const LoginPage = () => {
+  // const [formData, setFormData] = useState({
+  //   username: "",
+  //   password: "",
+  // });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const [error, setError] = useState("");
+  
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(email, password);
+
+    try {
+      const response = await fetch("http://localhost:3000/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({  email, password }),
+      });
+      const data = await response.json();
+
+      console.log(data);
+      if (response.ok) {
+        // Assuming response contains a token if login is successful
+        localStorage.setItem("authToken", data.token);
+        navigate("/sellerhome");
+      } else {
+        // Handle errors based on response status
+        alert(
+          data.message ||
+            "Login failed. Please check your credentials and try again."
+        );
+      }
+    } catch (error) {
+      console.error("Error logging in:", error);
+      alert(
+        "An error occurred during login. Please try again. " + error.message
+      );
+    }
+  };
 
   return (
-    <Container className="my-4">
-      <h1 className="text-center mb-4" style={{ fontSize: "55px" }}>
+    <Container fluid className="vh-100 d-flex flex-column  align-items-center">
+      <h1 className=" mb-4" style={{ fontSize: "45px", color: "black" }}>
         WELCOME TO SELLER DASHBOARD
       </h1>
-      <Row className="justify-content-center">
-        <Col lg={8} md={10} sm={12}>
-          <Card className="p-4 shadow-sm" style={{ border: "none", backgroundColor: "#C9E9F2" }}>
-            <Row>
-              <Col md={6}>
-                <Image 
-                  src={milkproducts} 
-                  alt="Milk products" 
-                  style={{ width: "100%", height: "auto", borderRadius: "10px" }} 
+      <Card className="p-4 shadow-sm w-100" style={{ maxWidth: "1200px", backgroundColor: "#C9E9F2", height: "500px" }}>
+        <Row className="h-100">
+          <Col md={4} className="p-0 d-flex justify-content-center align-items-center">
+            <div className="image-container">
+              <Image src={milkproducts} alt="Login"
+                style={{ width: "100%", height: "450px", borderRadius: "10px", maxWidth: "450px" ,marginLeft:"20px"}} />
+            </div>
+          </Col>
+          <Col md={8} className="d-flex align-items-center justify-content-center">
+            <Form className="w-100 p-3" style={{ maxWidth: "500px" }} onSubmit={handleSubmit}>
+              <h2 className="text-center mb-4" style={{ fontSize: "30px", color: "#0B4EFC", fontFamily: "Arial, sans-serif" }}>
+                Seller Login
+              </h2>
+              {error && <div className="alert alert-danger">{error}</div>}
+              <Form.Group controlId="email">
+                <Form.Control
+                  type="email"
+                  name="Email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
-              </Col>
-              <Col md={6}>
-                <h2 className="text-center mb-4" style={{ fontSize: "30px", color: "#0B4EFC", fontFamily: "Arial, sans-serif" }}>
-                  Seller Login
-                </h2>
-                <Form>
-                  {formFields.map((field, index) => (
-                    <Form.Group className="mb-3" controlId={field.controlId} key={index}>
-                      <Form.Label>{field.label}</Form.Label>
-                      <Form.Control type={field.type} placeholder={field.placeholder} />
-                    </Form.Group>
-                  ))}
-
-                  <Form.Group className="mb-3" controlId="formHorizontalCheck">
-                    <Form.Check label="Remember me" />
-                  </Form.Group>
-<Link to={"/sellerhome"}>
-                  <Button type="submit" className="w-100">
-                    Sign in
-                  </Button></Link>
-                </Form>
-              </Col>
-            </Row>
-          </Card>
-        </Col>
-      </Row>
+                <br />
+              </Form.Group>
+              <Form.Group controlId="formPassword">
+                <Form.Control
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <br />
+              </Form.Group>
+              <Button variant="primary" type="submit" className="w-100">
+                Login
+              </Button>
+              <br />
+              <br />
+              <div className="text-center mt-3">
+                <p>
+                  Don't have an account? <a href="/sellerregistration">Sign Up</a>
+                </p>
+              </div>
+            </Form>
+          </Col>
+        </Row>
+      </Card>
     </Container>
   );
-}
+};
 
-export default SellerLogin;
+export default LoginPage;

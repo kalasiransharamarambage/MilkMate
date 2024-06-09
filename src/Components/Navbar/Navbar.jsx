@@ -39,7 +39,7 @@ function NavbarComponent() {
           <Nav className="me-auto">
             <Nav.Link
               style={{
-                color: "black",
+              
                 fontSize: "18px",
                 fontWeight: "600",
                marginLeft:"500px",
@@ -57,7 +57,7 @@ function NavbarComponent() {
             <Nav.Link
               href="help"
               style={{
-                color: "black",
+                
                 fontSize: "18px",
                 fontWeight: "600",
                 marginRight: "20px",
@@ -73,7 +73,7 @@ function NavbarComponent() {
             <Nav.Link
               href="help"
               style={{
-                color: "black",
+               
                 fontSize: "18px",
                 fontWeight: "600",
                 marginRight: "20px",

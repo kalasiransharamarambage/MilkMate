@@ -103,9 +103,7 @@ function NavbarComponent() {
               <NavDropdown.Item href="delivery1">Delivery System</NavDropdown.Item>
               <NavDropdown.Item href="delivery4">Reviews</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="sellerlogin">
-                Seller Dashboard
-              </NavDropdown.Item>
+              
             </NavDropdown>
           </Nav>
           <div className="d-flex align-items-center">

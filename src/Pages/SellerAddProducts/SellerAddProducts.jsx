@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Row, Form, Button, Card } from 'react-bootstrap';
-import { MdDelete } from "react-icons/md";
-import { FaEdit } from "react-icons/fa";
+//import { MdDelete } from "react-icons/md";
+//import { FaEdit } from "react-icons/fa";
 
 const formFields = [
   { label: 'Product Name', type: 'text', placeholder: 'Enter product name' },

@@ -150,7 +150,7 @@ export default function AddAnimal() {
 
     const ButtonStyle = {
         display: 'flex',
-        display: 'block',
+        //display: 'block',
         backgroundColor: '#C9E9F2',
         outline :'none',
         border : 'none',

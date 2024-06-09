@@ -1,13 +1,14 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Placeholder from 'react-bootstrap/Placeholder';
+//import Placeholder from 'react-bootstrap/Placeholder';
 
 import homepic from '../assets/akilaImages/homepic.jpg';
 import homecow from '../assets/akilaImages/homecow.jpg';
 import homegoat from '../assets/akilaImages/homegoat.jpg';
 
-import Navbar from '../Components/Navbar/Navbar.jsx';
+//import Navbar from '../Components/Navbar/Navbar.jsx';
+
 
 
 

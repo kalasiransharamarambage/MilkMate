@@ -1,6 +1,6 @@
 import React  from 'react'
 import animal2 from '../assets/akilaImages/animal2.jpg';
-import eyeImage from '../assets/akilaImages/eye.png';
+//import eyeImage from '../assets/akilaImages/eye.png';
 import cowArtImage from '../assets/akilaImages/cowArt.jpg';
 
 import Navbar from '../Components/Navbar/Navbar.jsx';

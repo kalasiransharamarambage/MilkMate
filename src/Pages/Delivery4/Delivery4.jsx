@@ -99,7 +99,7 @@ const styles = {
   title: {
     color: '#fff',
     textAlign: 'left',
-    color: '#000000',
+    //color: '#000000',
     fontFamily:'Bold'
   },
   ratingContainer: {
@@ -115,7 +115,7 @@ const styles = {
     color: '#fff',
     display: 'block',
     marginBottom: '5px',
-    color: '#000000'
+    //color: '#000000'
   },
   star: {
     fontSize: '24px',

@@ -107,10 +107,10 @@ function Dashboard() {
                        
                         </Col>
                         <Col>
-                       
+                       <Link to="/sellerRegistration">
                              <Button variant="outline-primary" style={{width:"200px"}}>
                              Register as a Seller
-                         </Button>
+                         </Button></Link>
                          </Col>
                          </Row>
                     </div>

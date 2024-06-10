@@ -40,7 +40,9 @@ export default function Animal2() {
         //flexDirection: 'column',
         alignItems: 'left',
         height : '200px',
-        marginLeft:'50px'
+        marginLeft:'50px',
+        marginBottom:'50px' 
+        
     };
 
     const textStyle = {
@@ -67,7 +69,7 @@ export default function Animal2() {
                     <img src={eyeImage} alt="Eye" style={imageStyle} />
                 </div> */}
                    <Link to={"/search"}>
-                <Button>
+                <Button variant="outline-primary">
                 <div style={textStyle}>
                     See <br/>Animals
                 </div></Button></Link>
@@ -76,21 +78,21 @@ export default function Animal2() {
 
             <div style={cardStyle}>
             <Link to={"/addanimal"}>
-                <Button>
+                <Button variant="outline-primary">
                 <div style={textStyle}>
                     Add <br/>Animals
                 </div></Button></Link>
                 <img src={cowArtImage} alt="Cow" style={{ ...imageStyle, width: '200px', height: '200px'}} />
             </div>
 
-            <div style={cardStyle}>
+            {/* <div style={cardStyle}>
             <Link to={"/animalprofile"}>
                 <Button>
                 <div style={textStyle}>
                     Medi  <br/>Info
                 </div></Button></Link>
                 <img src={cowArtImage} alt="Cow" style={{ ...imageStyle, marginLeft:'40px', width: '200px', height: '200px'}} />
-            </div>     
+            </div>      */}
         </div>   
         
     </div>

@@ -265,8 +265,9 @@ const SignUpPage = () => {
   };
 
   const validatePhone = (phone) => {
-    const re = cc; // Starts with 0, followed by 9 digits
+    const re = /^0[0-9]{9}$/; // Starts with 0, followed by 9 digits
     return re.test(String(phone));
+
   };
 
   const validateCity = (city) => {
@@ -455,7 +456,7 @@ const SignUpPage = () => {
             <Image
               src={sellerimg}
               alt="SignUp"
-              style={{ width: "450px", height: "450px", borderRadius: "10px" ,marginLeft:"20px",marginTop:"70px"}}
+              style={{ width: "450px", height: "450px", borderRadius: "10px" ,marginLeft:"20px",marginTop:"100px"}}
             />
           </div>
         </Col>

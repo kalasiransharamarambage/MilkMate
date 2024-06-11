@@ -82,7 +82,8 @@ const AdminDashboard = () => {
                 <TableCell>Price</TableCell>
                 <TableCell>Quantity</TableCell>
                 <TableCell>Sub-total</TableCell>
-                <TableCell>Actions</TableCell>
+                <TableCell>Approval</TableCell>
+                <TableCell>Delete</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -93,12 +94,12 @@ const AdminDashboard = () => {
                       <Grid item>
                         <Avatar alt={product.name} src={product.image} />
                       </Grid>
-                      <Grid item>{product.name}</Grid>
+                      <Grid item>{product.productName}</Grid>
                     </Grid>
                   </TableCell>
-                  <TableCell>${product.price}</TableCell>
+                  <TableCell>${product.purchasePrice}</TableCell>
                   <TableCell>{product.quantity}</TableCell>
-                  <TableCell>${product.price * product.quantity}</TableCell>
+                  <TableCell>${product.purchasePrice * product.quantity}</TableCell>
                   <TableCell>
                     <Grid container spacing={1}>
                       {!product.approved && (
@@ -116,6 +117,15 @@ const AdminDashboard = () => {
                           
                         </>
                       )}
+  {product.approved && (
+                        <Grid item>
+                          <Typography variant="body2" color="success.main">
+                            Approved
+                          </Typography>
+                        </Grid>
+                      )}
+                      </Grid>
+                      </TableCell><TableCell>
                       <Grid item>
                         <Button
                           variant="contained"
@@ -126,14 +136,8 @@ const AdminDashboard = () => {
                           Delete
                         </Button>
                       </Grid>
-                      {product.approved && (
-                        <Grid item>
-                          <Typography variant="body2" color="success.main">
-                            Approved
-                          </Typography>
-                        </Grid>
-                      )}
-                    </Grid>
+                    
+                   
                   </TableCell>
                 </TableRow>
               ))}

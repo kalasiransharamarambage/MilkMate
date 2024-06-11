@@ -275,7 +275,7 @@ const AddProduct = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="productImage">
-          <Form.Label>Product Image URL:</Form.Label>
+          <Form.Label>Product Image:</Form.Label>
           <Form.Control
             type="text"
             name="productImage"
@@ -376,3 +376,11 @@ const AddProduct = () => {
 };
 
 export default AddProduct;
+
+
+
+
+
+
+
+

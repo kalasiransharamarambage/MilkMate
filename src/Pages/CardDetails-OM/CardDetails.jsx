@@ -1,8 +1,8 @@
 import React from 'react';
 import { Col, Row, Form, Button, Card } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
-
-function SellerPayment() {
+function CardDetails() {
   const formFields = [
     { controlId: 'formGridAddress1', label: 'Card Number', placeholder: 'Enter Card Number' },
     { controlId: 'formGridAddress2', label: 'Card Holder Name', placeholder: 'Enter Card Holder Name' },
@@ -50,7 +50,9 @@ function SellerPayment() {
 
         <Row className="mb-3">
           <Col className="text-center">
+          <Link to="/receipt"> 
             <Button variant="primary" type="submit">Submit</Button>
+            </Link>
           </Col>
         </Row>
       </Form>
@@ -58,4 +60,4 @@ function SellerPayment() {
   );
 }
 
-export default SellerPayment;
+export default CardDetails;

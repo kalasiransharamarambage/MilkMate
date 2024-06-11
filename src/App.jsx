@@ -34,6 +34,7 @@ import AdminDashboard from "./Pages/AdminDashboard.jsx";
 import AdminLogin from "./Pages/admin-login.jsx";
 import UserManagement from "./Pages/UserManagement/UserManagement.jsx";
 import SellerRegistration from "./Pages/SellerRegistration/SellerRegistration.jsx";
+import Receipt from "./Pages/Receipt-OM/receipt.jsx";
 
 
 
@@ -76,6 +77,7 @@ function App() {
         <Route path="/adminlogin" element= {<AdminLogin/>}/> 
         <Route path="/usermanagement" element= {<UserManagement/>}/>
         <Route path="/sellerregistration" element= {<SellerRegistration/>}/> 
+        <Route path="/receipt" element= {<Receipt/>}/> 
 
 
         

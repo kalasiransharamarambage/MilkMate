@@ -1,4 +1,4 @@
-import React from "react";
+import "react";
 import DashboardImg from "../../assets/Img/Factory.png";
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
@@ -99,7 +99,7 @@ function Dashboard() {
                     <div style={{ display: "flex", justifyContent: "center" }}>
                         <Row>
                             <Col>
-                    <Link to="/yogurt"> 
+                    <Link to="/orderform"> 
                        
                            <Button variant="outline-primary" style={{width:"200px"}}>
                             Register as a Customer

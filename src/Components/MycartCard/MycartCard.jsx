@@ -10,7 +10,7 @@ function MycartCard({ name, price, qty, total, remove }) {
           <Col style={{ display: "flex" }}>
             <Col xs={2} style={{ display: "flex", justifyContent: "center" }}>
               <Image
-                src={Yogurt} // Use the Yogurt image
+                
                 style={{ width: "110px", borderRadius: "10px" }}
                 alt="Yogurt"
               />

@@ -40,8 +40,7 @@ function Yogurt() { // Corrected component name to follow standard naming conven
                         </Button></Link>
                     </Col>
                 </Row>
-                <Row style={{ padding: "20px", backgroundColor: "white", borderRadius: "5px" }}>
-                </Row>
+                
             </Row>
         </Container>
     );

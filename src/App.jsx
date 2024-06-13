@@ -1,4 +1,4 @@
-import React from "react";
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Layout from "../src/Layout/layout";
 import Dashboard from "./Pages/Dashboard-OM/Dashboard";
@@ -35,7 +35,8 @@ import AdminLogin from "./Pages/admin-login.jsx";
 import UserManagement from "./Pages/UserManagement/UserManagement.jsx";
 import SellerRegistration from "./Pages/SellerRegistration/SellerRegistration.jsx";
 import Receipt from "./Pages/Receipt-OM/receipt.jsx";
-
+import OrderList from "./Pages/OrderList/OrderList.jsx"
+import Updateorder from './Pages/Updateorder/Updateorder.jsx';
 
 
 
@@ -78,7 +79,8 @@ function App() {
         <Route path="/usermanagement" element= {<UserManagement/>}/>
         <Route path="/sellerregistration" element= {<SellerRegistration/>}/> 
         <Route path="/receipt" element= {<Receipt/>}/> 
-
+        <Route path="/orderlist" element= {<OrderList/>}/> 
+        <Route path="/update-order/:orderId" element= {<Updateorder/>}/> 
 
         
        

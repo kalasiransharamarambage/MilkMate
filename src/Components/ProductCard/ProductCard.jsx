@@ -1,8 +1,8 @@
-import React from "react";
+import "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
-import yoghurt from "../../assets/Img/yogurt.jpg";
+//import yoghurt from "../../assets/Img/yogurt.jpg";
 import { Link } from 'react-router-dom';
 
 function ProductCard({ img, title, paragraph }) {
@@ -29,8 +29,8 @@ function ProductCard({ img, title, paragraph }) {
         <h8>{paragraph}</h8>
       </div>
       <div style={{ display: "flex", justifyContent: "center", marginTop: "20px", textAlign: "center" }}>
-        <Link to ="/mycart">
-        <Button variant="outline-primary">Add to Cart</Button>
+        <Link to ="/Yogurt">
+        <Button variant="outline-primary">View</Button>
         </Link>
       </div>
     </Card>

@@ -1,0 +1,23 @@
+.order-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .order-item img {
+    width: 100%;
+  }
+  
+  .order-item h5 {
+    margin: 0;
+  }
+  
+  .order-item p {
+    margin: 0;
+  }
+  
+  .order-item .buttons {
+    display: flex;
+    align-items: center;
+  }
+  

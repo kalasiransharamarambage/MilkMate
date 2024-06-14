@@ -271,45 +271,25 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Form, Button } from 'react-bootstrap';
+import { Container, TextField, Button, Typography } from '@mui/material';
 
 const AddProduct = () => {
-  const [product, setProduct] = useState({
-    productName: '',
-    productImage: null,
-    purchasePrice: '',
-    brand: '',
-    quantity: '',
-    manufacturingDate: '',
-  });
+  const [productName, setProductName] = useState('');
+  const [purchasePrice, setPurchasePrice] = useState('');
+  const [quantity, setQuantity] = useState('');
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setProduct({ ...product, [name]: value });
-  };
-
-  const handleImageChange = (e) => {
-    setProduct({ ...product, productImage: e.target.files[0] });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append('productName', product.productName);
-    formData.append('productImage', product.productImage);
-    formData.append('purchasePrice', product.purchasePrice);
-    formData.append('brand', product.brand);
-    formData.append('quantity', product.quantity);
-    formData.append('manufacturingDate', product.manufacturingDate);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const productData = {
+      productName,
+      purchasePrice,
+      quantity,
+    };
 
     try {
-      const response = await axios.post('http://localhost:3000/seller/add-product', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      console.log(response.data);
+      const response = await axios.post('http://localhost:3000/seller/add-product', productData);
       alert('Product added successfully!');
+      console.log(response.data);
     } catch (error) {
       console.error('Error:', error);
       alert('Failed to add product');
@@ -317,35 +297,33 @@ const AddProduct = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="productName">
-        <Form.Label>Product Name</Form.Label>
-        <Form.Control type="text" name="productName" onChange={handleChange} required />
-      </Form.Group>
-      <Form.Group controlId="productImage">
-        <Form.Label>Product Image</Form.Label>
-        <Form.Control type="file" name="productImage" onChange={handleImageChange} required />
-      </Form.Group>
-      <Form.Group controlId="purchasePrice">
-        <Form.Label>Purchase Price</Form.Label>
-        <Form.Control type="number" name="purchasePrice" onChange={handleChange} required />
-      </Form.Group>
-      <Form.Group controlId="brand">
-        <Form.Label>Brand</Form.Label>
-        <Form.Control type="text" name="brand" onChange={handleChange} required />
-      </Form.Group>
-      <Form.Group controlId="quantity">
-        <Form.Label>Quantity</Form.Label>
-        <Form.Control type="number" name="quantity" onChange={handleChange} required />
-      </Form.Group>
-      <Form.Group controlId="manufacturingDate">
-        <Form.Label>Manufacturing Date</Form.Label>
-        <Form.Control type="date" name="manufacturingDate" onChange={handleChange} required />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Add Product
-      </Button>
-    </Form>
+    <Container>
+      <Typography variant="h4" gutterBottom>Add Product</Typography>
+      <form onSubmit={handleSubmit}>
+        <TextField
+          label="Product Name"
+          value={productName}
+          onChange={(e) => setProductName(e.target.value)}
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="Purchase Price"
+          value={purchasePrice}
+          onChange={(e) => setPurchasePrice(e.target.value)}
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="Quantity"
+          value={quantity}
+          onChange={(e) => setQuantity(e.target.value)}
+          fullWidth
+          margin="normal"
+        />
+        <Button type="submit" variant="contained" color="primary">Add Product</Button>
+      </form>
+    </Container>
   );
 };
 

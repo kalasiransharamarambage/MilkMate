@@ -59,6 +59,9 @@ function OrderList() {
             <th>Delivery Address</th>
             <th>Quantity</th>
             <th>Pack Size</th>
+            <th>Delete</th>
+            <th>Update</th>
+           
           </tr>
         </thead>
         <tbody>

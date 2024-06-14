@@ -1,4 +1,4 @@
-import React from 'react';
+import 'react';
 import { Image, Row, Col, Container } from 'react-bootstrap';
 import yoghurt from "../../assets/Img/drink.png";
 import Button from 'react-bootstrap/Button';

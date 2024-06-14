@@ -5,6 +5,8 @@ import yoghurt from '../../assets/Img/drink.png';
 import curd from '../../assets/Img/curd.png';
 import Butter from '../../assets/Img/Butter.png';
 import drink from '../../assets/Img/yogurt.jpg';
+import cheese from "../../assets/Img/cheese.jpg";
+import MilkPowder from "../../assets/Img/milkPowder.jpg";
 import {Link} from "react-router-dom";
 
 
@@ -13,6 +15,8 @@ const initialCartItems = [
   { id: 2, name: 'Curd', price: 60, qty: 1, image: curd },
   { id: 3, name: 'Butter', price: 200, qty: 4, image: Butter },
   { id: 4, name: 'Yogurt Drink', price: 150, qty: 2, image: drink },
+  { id: 5, name: 'Milk Powder', price: 150, qty: 2, image: MilkPowder },
+  { id: 6, name: 'Cheese', price: 150, qty: 2, image: cheese}
 ];
 
 const mycart = () => {
@@ -47,7 +51,7 @@ const mycart = () => {
       {cartItems.map((item) => (
         <Row key={item.id} className="align-items-center text-center py-2 border-bottom">
           <Col xs={6} sm={4} md={2}>
-            <Image src={item.image} rounded width={50} height={50} />
+            <Image src={item.image} rounded width={75} height={60} />
           </Col>
           <Col xs={6} sm={4} md={2}>{item.name}</Col>
           <Col xs={6} sm={4} md={2}>Rs. {item.price}</Col>

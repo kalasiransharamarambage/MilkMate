@@ -90,8 +90,8 @@ function OrderForm() {
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
-        <Row>
+      <Form onSubmit={handleSubmit} style={{ maxWidth: '800px', margin: 'auto', padding: '20px', border: '1px solid #ccc', borderRadius: '10px' }}>
+        <Row className="mb-4">
           <Col style={{ display: 'flex', justifyContent: 'center', fontSize: '35px', fontWeight: 'bold' }}>
             <Form.Label>Online Ordering Form</Form.Label>
           </Col>
@@ -103,14 +103,13 @@ function OrderForm() {
           { field: 'district', label: 'District' },
           { field: 'deliveryAddress', label: 'Delivery Address' },
           { field: 'quantity', label: 'Quantity' },
-          { field: 'packSize', label: 'Pack Size' },
         ].map(({ field, label }, index) => (
-          <Form.Group controlId={`formBasic${field}`} key={index}>
+          <Form.Group controlId={`formBasic${field}`} key={index} className="mb-3">
             <Row>
-              <Col xs={2} style={{ display: 'flex', justifyContent: 'end' }}>
+              <Col xs={3} style={{ display: 'flex', justifyContent: 'end', alignItems: 'center' }}>
                 <Form.Label>{label} :</Form.Label>
               </Col>
-              <Col xs={8}>
+              <Col xs={7}>
                 <Form.Control
                   type="text"
                   placeholder={`Enter your ${label.toLowerCase()}`}
@@ -128,16 +127,14 @@ function OrderForm() {
                   <div className="text-danger">{quantityError}</div>
                 )}
               </Col>
-              <Col xs={2} style={{ display: 'flex', justifyContent: 'center', padding: '20px' }}>
-              </Col>
             </Row>
           </Form.Group>
         ))}
         {error && <div className="text-danger">{error}</div>}
         <Row>
           <Col style={{ display: 'flex', justifyContent: 'center' }}>
-            <Button variant="outline-primary" type="submit">
-              Next
+            <Button variant="primary" type="submit">
+              Submit
             </Button>
           </Col>
         </Row>

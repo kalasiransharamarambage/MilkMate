@@ -7,8 +7,7 @@ import Butter from '../../assets/Img/Butter.png';
 import drink from '../../assets/Img/yogurt.jpg';
 import cheese from "../../assets/Img/cheese.jpg";
 import MilkPowder from "../../assets/Img/milkPowder.jpg";
-import {Link} from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 const initialCartItems = [
   { id: 1, name: 'Yogurt', price: 100, qty: 3, image: yoghurt },
@@ -16,10 +15,10 @@ const initialCartItems = [
   { id: 3, name: 'Butter', price: 200, qty: 4, image: Butter },
   { id: 4, name: 'Yogurt Drink', price: 150, qty: 2, image: drink },
   { id: 5, name: 'Milk Powder', price: 150, qty: 2, image: MilkPowder },
-  { id: 6, name: 'Cheese', price: 150, qty: 2, image: cheese}
+  { id: 6, name: 'Cheese', price: 150, qty: 2, image: cheese }
 ];
 
-const mycart = () => {
+const MyCart = () => {
   const [cartItems, setCartItems] = useState(initialCartItems);
 
   const handleQuantityChange = (id, value) => {
@@ -29,9 +28,22 @@ const mycart = () => {
     );
   };
 
-  const handleDelete = (id) => {
-    setCartItems((items) => items.filter((item) => item.id !== id));
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/cart/${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        setCartItems((items) => items.filter((item) => item.id !== id));
+      } else {
+        alert('Failed to delete item');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Failed to delete item');
+    }
   };
+  
 
   const calculateTotal = () => {
     return cartItems.reduce((total, item) => total + item.price * item.qty, 0);
@@ -46,7 +58,7 @@ const mycart = () => {
         <Col xs={6} sm={4} md={2}>Price</Col>
         <Col xs={6} sm={4} md={2}>Quantity</Col>
         <Col xs={6} sm={4} md={2}>Total</Col>
-        <Col xs={6} sm={4} md={2}>Actions</Col>
+        <Col xs={6} sm={4} md={2}>Delete</Col>
       </Row>
       {cartItems.map((item) => (
         <Row key={item.id} className="align-items-center text-center py-2 border-bottom">
@@ -84,9 +96,6 @@ const mycart = () => {
           </Col>
           <Col xs={6} sm={4} md={2}>Rs. {item.price * item.qty}</Col>
           <Col xs={6} sm={4} md={2}>
-            <Button variant="success" className="me-2" onClick={() => alert('Update feature not implemented')}>
-              Update
-            </Button>
             <Button variant="danger" onClick={() => handleDelete(item.id)}>
               Delete
             </Button>
@@ -97,13 +106,14 @@ const mycart = () => {
         <Col md={3} className="text-end">
           <h5>Total: Rs. {calculateTotal()}</h5>
           <Link to="/orderform">
-          <Button variant="primary" onClick={() => alert('Checkout feature not implemented')}>
-            Order
-          </Button></Link>
+            <Button variant="primary" onClick={() => alert('Checkout feature not implemented')}>
+              Order
+            </Button>
+          </Link>
         </Col>
       </Row>
     </Container>
   );
 };
 
-export default mycart;
+export default MyCart;

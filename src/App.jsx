@@ -41,6 +41,7 @@ import Updateorder from './Pages/Updateorder/Updateorder.jsx';
 
 
 
+
 function App() {
   return (
     <Router>
@@ -81,7 +82,7 @@ function App() {
         <Route path="/receipt" element= {<Receipt/>}/> 
         <Route path="/orderlist" element= {<OrderList/>}/> 
         <Route path="/update-order/:orderId" element= {<Updateorder/>}/> 
-
+        
         
        
         </Route>

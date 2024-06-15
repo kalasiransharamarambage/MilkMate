@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { Table, Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -9,17 +10,22 @@ function OrderList() {
   useEffect(() => {
     fetch('http://localhost:3001/api/orders')
       .then((response) => {
+        console.log('Response status:', response.status);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         return response.json();
       })
-      .then((data) => setOrders(data))
+      .then((data) => {
+        console.log('Fetched orders:', data);
+        setOrders(data);
+      })
       .catch((error) => {
         console.error('Error fetching orders:', error);
         setError('Error fetching orders.');
       });
   }, []);
+  
 
 
   const handleDelete = (orderId) => {

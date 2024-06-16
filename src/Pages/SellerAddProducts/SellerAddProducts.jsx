@@ -278,18 +278,26 @@ const AddProduct = () => {
     brand: "",
     quantity: "",
     manufacturingDate: "",
+    sellerName:"",
   });
 
   const [errors, setErrors] = useState({
     purchasePrice: "",
     brand: "",
     quantity: "",
-    manufacturingDate: ""
+    manufacturingDate: "",
+    sellerName:"",
+
   });
 
   const validate = (name, value) => {
     let error = "";
     switch (name) {
+      case "sellerName":
+        if (!/^[a-zA-Z\s!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/.test(value)) {
+          error = "Brand must contain only letters and symbols";
+        }
+        break;
       case "purchasePrice":
         if (!/^\d*$/.test(value)) {
           error = "Purchase Price must be a number";
@@ -330,6 +338,9 @@ const AddProduct = () => {
         if (!['Yoghurt', 'cheese', 'yoghurt drink', 'Milk powder', 'milk butter', 'curd'].includes(value)) {
           newValue = '';
         }
+        break;
+        case 'sellerName':
+        newValue = value.replace(/[^a-zA-Z\s!@#$%^&*()_+=\-[\]{};':"\\|,.<>/?]/g, '');
         break;
       case 'purchasePrice':
         newValue = value.replace(/\D/g, '');
@@ -464,6 +475,19 @@ const AddProduct = () => {
             onChange={handleChange}
             required
           />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="sellerName">
+          <Form.Label>Seller Name with Your Initials:</Form.Label>
+          <Form.Control
+            type="text"
+            name="sellerName"
+            value={product.sellerName}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+            required
+          />
+          {errors.sellerName && <span style={{ color: 'red' }}>{errors.sellerName}</span>}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="purchasePrice">

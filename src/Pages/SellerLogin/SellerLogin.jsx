@@ -112,3 +112,98 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
+
+
+
+
+
+// src/Pages/SellerLogin.jsx
+
+// import React, { useState } from "react";
+// import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
+// import axios from "axios";
+// import { useNavigate } from "react-router-dom";
+// import milkproducts from "../../assets/Img/milkproducts.jpg";
+
+// const LoginPage = () => {
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const [errors, setErrors] = useState({});
+//   const navigate = useNavigate();
+
+//   const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.toLowerCase());
+//   const validatePassword = (password) => password.length >= 6;
+
+//   const handleChange = (setter, validator, field) => (e) => {
+//     const value = e.target.value;
+//     setter(value);
+//     if (!validator(value)) {
+//       setErrors((prevErrors) => ({ ...prevErrors, [field]: `Invalid ${field} format` }));
+//     } else {
+//       setErrors((prevErrors) => {
+//         const { [field]: _, ...rest } = prevErrors;
+//         return rest;
+//       });
+//     }
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     let validationErrors = {};
+
+//     if (!email || !validateEmail(email)) validationErrors.email = "Valid email is required";
+//     if (!password || !validatePassword(password)) validationErrors.password = "Password is required and must be at least 6 characters long";
+
+//     if (Object.keys(validationErrors).length > 0) {
+//       setErrors(validationErrors);
+//       return;
+//     }
+
+//     try {
+//       const response = await axios.post("http://localhost:3000/api/seller/login", { email, password });
+//       localStorage.setItem("authToken", response.data.token);
+//       localStorage.setItem("sellerId", response.data.sellerId);
+//       navigate("/allproducts");
+//     } catch (error) {
+//       alert(error.response.data || "An error occurred during login. Please try again.");
+//     }
+//   };
+
+//   return (
+//     <Container fluid className="vh-100 d-flex flex-column align-items-center justify-content-center">
+//       <Card className="p-4 shadow-sm w-100" style={{ maxWidth: "400px" }}>
+//         <h2 className="text-center mb-4">Login</h2>
+//         <Form onSubmit={handleSubmit}>
+//           <Form.Group controlId="formEmail">
+//             <Form.Label>Email :</Form.Label>
+//             <Form.Control
+//               type="email"
+//               placeholder="Enter your email"
+//               value={email}
+//               onChange={handleChange(setEmail, validateEmail, "email")}
+//               isInvalid={!!errors.email}
+//             />
+//             <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
+//           </Form.Group>
+//           <br />
+//           <Form.Group controlId="formPassword">
+//             <Form.Label>Password :</Form.Label>
+//             <Form.Control
+//               type="password"
+//               placeholder="Enter your password"
+//               value={password}
+//               onChange={handleChange(setPassword, validatePassword, "password")}
+//               isInvalid={!!errors.password}
+//             />
+//             <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
+//           </Form.Group>
+//           <br />
+//           <Button variant="primary" type="submit" className="w-100">Login</Button>
+//         </Form>
+//       </Card>
+//     </Container>
+//   );
+// };
+
+// export default LoginPage;

@@ -13,7 +13,8 @@ import StarIcon from '@mui/icons-material/Star';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 const sidebarItems = [
-  { text: 'Dashboard', icon: <DashboardIcon />, path: '/profile' },
+  { text: 'User Dashboard', icon: <DashboardIcon />, path: '/usermanagement' },
+  { text: 'Product Dashboard', icon: <DashboardIcon />, path: '/admindashboard' },
   { text: 'Track Order', icon: <LocalShippingIcon />, path: '/track-order' },
   { text: 'Shopping Cart', icon: <ShoppingCartIcon />, path: '/shopping-cart' },
   { text: 'Cards & Address', icon: <CreditCardIcon />, path: '/cards-address' },

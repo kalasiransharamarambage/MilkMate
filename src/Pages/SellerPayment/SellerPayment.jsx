@@ -1,18 +1,39 @@
-import React from 'react';
-import { Col, Row, Form, Button, Card } from 'react-bootstrap';
 
+
+
+
+
+
+
+
+
+import React, { useState } from 'react';
+import { Col, Row, Form, Button, Card, Alert } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+// Validation schema
+const schema = yup.object().shape({
+  cardNumber: yup.string().required('Card number is required').matches(/^\d{16}$/, 'Card number must be exactly 16 digits'),
+  cardHolderName: yup.string().required('Card holder name is required').matches(/^[A-Za-z\s]+$/, 'Card holder name can only contain letters and spaces'),
+  mm: yup.string().required('MM is required').matches(/^\d{2}$/, 'MM must be exactly 2 digits'),
+  yy: yup.string().required('YY is required').matches(/^\d{2}$/, 'YY must be exactly 2 digits'),
+  cvv: yup.string().required('CVV is required').matches(/^\d{3}$/, 'CVV must be exactly 3 digits')
+});
 
 function SellerPayment() {
-  const formFields = [
-    { controlId: 'formGridAddress1', label: 'Card Number', placeholder: 'Enter Card Number' },
-    { controlId: 'formGridAddress2', label: 'Card Holder Name', placeholder: 'Enter Card Holder Name' },
-  ];
+  const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    resolver: yupResolver(schema)
+  });
+  
+  const [paymentStatus, setPaymentStatus] = useState('');
 
-  const expiryFields = [
-    { controlId: 'formGridMM', label: 'MM' },
-    { controlId: 'formGridYY', label: 'YY' },
-    { controlId: 'formGridCVV', label: 'CVV' },
-  ];
+  const onSubmit = (data) => {
+    // setPaymentStatus('Ongoing');
+    alert('Payment successful');
+    reset();
+  };
 
   return (
     <Card
@@ -31,21 +52,61 @@ function SellerPayment() {
           Card Details
         </Col>
       </Row>
-      <Form>
-        {formFields.map((field, index) => (
-          <Form.Group className="mb-3" controlId={field.controlId} key={index}>
-            <Form.Label>{field.label}</Form.Label>
-            <Form.Control placeholder={field.placeholder} />
-          </Form.Group>
-        ))}
+      {paymentStatus && (
+        <Row className="mb-3">
+          <Col className="text-center">
+            <Alert variant="success">Payment Status: {paymentStatus}</Alert>
+          </Col>
+        </Row>
+      )}
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form.Group className="mb-3" controlId="formGridAddress1">
+          <Form.Label>Card Number</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter Card Number"
+            {...register('cardNumber')}
+          />
+          {errors.cardNumber && <Alert variant="danger">{errors.cardNumber.message}</Alert>}
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formGridAddress2">
+          <Form.Label>Card Holder Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter Card Holder Name"
+            {...register('cardHolderName')}
+          />
+          {errors.cardHolderName && <Alert variant="danger">{errors.cardHolderName.message}</Alert>}
+        </Form.Group>
 
         <Row className="mb-3">
-          {expiryFields.map((field, index) => (
-            <Form.Group as={Col} controlId={field.controlId} key={index}>
-              <Form.Label>{field.label}</Form.Label>
-              <Form.Control />
-            </Form.Group>
-          ))}
+          <Form.Group as={Col} controlId="formGridMM">
+            <Form.Label>MM</Form.Label>
+            <Form.Control
+              type="text"
+              {...register('mm')}
+            />
+            {errors.mm && <Alert variant="danger">{errors.mm.message}</Alert>}
+          </Form.Group>
+
+          <Form.Group as={Col} controlId="formGridYY">
+            <Form.Label>YY</Form.Label>
+            <Form.Control
+              type="text"
+              {...register('yy')}
+            />
+            {errors.yy && <Alert variant="danger">{errors.yy.message}</Alert>}
+          </Form.Group>
+
+          <Form.Group as={Col} controlId="formGridCVV">
+            <Form.Label>CVV</Form.Label>
+            <Form.Control
+              type="text"
+              {...register('cvv')}
+            />
+            {errors.cvv && <Alert variant="danger">{errors.cvv.message}</Alert>}
+          </Form.Group>
         </Row>
 
         <Row className="mb-3">
@@ -59,3 +120,7 @@ function SellerPayment() {
 }
 
 export default SellerPayment;
+
+
+
+

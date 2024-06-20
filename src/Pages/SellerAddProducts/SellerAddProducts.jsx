@@ -1,202 +1,98 @@
 
-// import React, { useState } from "react";
-// import axios from "axios";
-// import { Col, Row, Form, Button, Card } from "react-bootstrap";
-
-// const AddProduct = () => {
-//   const [product, setProduct] = useState({
-//     productName: "",
-//     productImage: "",
-//     purchasePrice: "",
-//     brand: "",
-//     quantity: "",
-//     manufacturingDate: "",
-//     sellerName: "",
-//     phoneNumber: "",
-//     email: "",
-//   });
-
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setProduct({
-//       ...product,
-//       [name]: value,
-//     });
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const response = await axios.post(
-//         "http://localhost:3000/seller/add-product",
-//         product
-//       );
-//       console.log(response.data);
-//       alert("Product added successfully!");
-//     } catch (error) {
-//       console.error(error);
-//       alert("Failed to add product");
-//     }
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <Card
-//         style={{
-//           width: "850px",
-//           maxWidth: "80rem",
-//           padding: "20px",
-//           border: "none",
-//           backgroundColor: "#C9E9F2",
-//           boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.5)",
-//           margin: "0 auto",
-//         }}
-//       >
-//         <Row className="mb-3">
-//          <Col className="text-center" style={{ fontSize: '35px', fontWeight: 'bold' }}>
-//             Add Products
-//          </Col>
-//         </Row>
-//       <div>
-      
-//         <label>Product Name: </label>
-//         <input type="text" name="productName" value={product.productName} onChange={handleChange} required />
-       
-//       </div>
-    
-//       <br/>
-//       <div>
-//         <label>Product Image URL: </label>
-//         <input type="text" name="productImage" value={product.productImage} onChange={handleChange} required />
-//       </div><br/>
-//       <div>
-//         <label>Purchase Price: </label>
-//         <input type="number" name="purchasePrice" value={product.purchasePrice} onChange={handleChange} required />
-//       </div><br/>
-//       <div>
-//         <label>Brand: </label>
-//         <input type="text" name="brand" value={product.brand} onChange={handleChange} required />
-//       </div><br/>
-//       <div>
-//         <label>Quantity: </label>
-//         <input type="number" name="quantity" value={product.quantity} onChange={handleChange} required />
-//       </div><br/>
-//       <div>
-//         <label>Manufacturing Date: </label>
-//         <input type="date" name="manufacturingDate" value={product.manufacturingDate} onChange={handleChange} required />
-//       </div><br/>
-//       <div>
-//         <label>Seller Name: </label>
-//         <input type="text" name="sellerName" value={product.sellerName} onChange={handleChange} required />
-//       </div><br/>
-//       <div>
-//         <label>Phone Number: </label>
-//         <input type="text" name="phoneNumber" value={product.phoneNumber} onChange={handleChange} required />
-//       </div><br/>
-//       <div>
-//         <label>Email: </label>
-//         <input type="email" name="email" value={product.email} onChange={handleChange} required />
-//       </div><br/>
-//       <button type="submit">Add</button>
-        
-//       </Card>
-//       </form>
-//   );
-// };
-
-// export default AddProduct;
-
-
-
-
-
-
-
-
 import React, { useState } from "react";
 import axios from "axios";
-import { Col, Row, Form, Button, Card,Alert } from "react-bootstrap";
+import { Col, Row, Form, Button, Card } from "react-bootstrap";
 
 const AddProduct = () => {
   const [product, setProduct] = useState({
     productName: "",
-    productImage: "",
+    productImage: null,
     purchasePrice: "",
     brand: "",
     quantity: "",
     manufacturingDate: "",
-    sellerName: "",
-    phoneNumber: "",
-    email: "",
+    sellerName:"",
   });
 
   const [errors, setErrors] = useState({
-    phoneNumber: '',
-    email: ''
+    purchasePrice: "",
+    brand: "",
+    quantity: "",
+    manufacturingDate: "",
+    sellerName:"",
+
   });
 
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    let newValue = value;
-    let error = '';
-
-
+  const validate = (name, value) => {
+    let error = "";
     switch (name) {
-      case 'productName':
-        // Validate product name dropdown options
-        if (!['Yoghurt', 'cheese', 'yoghurt drink', 'Milk powder', 'milk butter', 'curd'].includes(value)) {
-          // Handle invalid input (optional: display error message)
-          newValue = '';
-          error = 'Invalid product name';
-
+      case "sellerName":
+        if (!/^[a-zA-Z\s!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/.test(value)) {
+          error = "Brand must contain only letters and symbols";
         }
         break;
-      case 'purchasePrice':
-        // Allow only numbers
-        newValue = value.replace(/\D/g, '');
+      case "purchasePrice":
+        if (!/^\d*$/.test(value)) {
+          error = "Purchase Price must be a number";
+        }
         break;
-      case 'brand':
-        // Allow only letters
-        newValue = value.replace(/[^a-zA-Z]/g, '');
+      case "brand":
+        if (!/^[a-zA-Z\s]*$/.test(value)) {
+          error = "Brand must contain only letters";
+        }
         break;
-      case 'quantity':
-        // Allow only numbers
-        newValue = value.replace(/\D/g, '');
+      case "quantity":
+        if (!/^\d*$/.test(value)) {
+          error = "Quantity must be a number";
+        }
         break;
-      case 'manufacturingDate':
-        // Validate manufacturing date (e.g., ensure it's not a future date)
+      case "manufacturingDate":
         const today = new Date();
         const selectedDate = new Date(value);
         if (selectedDate > today) {
-          // Handle invalid date (optional: display error message)
-          newValue = '';
-          error = 'Manufacturing date cannot be in the future';
+          error = "Manufacturing Date cannot be in the future";
         }
         break;
-      case 'sellerName':
-        // Allow only letters and spaces
+      default:
+        break;
+    }
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: error,
+    }));
+  };
+
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    let newValue = value;
+
+    switch (name) {
+      case 'productName':
+        if (!['Yoghurt', 'cheese', 'yoghurt drink', 'Milk powder', 'milk butter', 'curd'].includes(value)) {
+          newValue = '';
+        }
+        break;
+        case 'sellerName':
+        newValue = value.replace(/[^a-zA-Z\s!@#$%^&*()_+=\-[\]{};':"\\|,.<>/?]/g, '');
+        break;
+      case 'purchasePrice':
+        newValue = value.replace(/\D/g, '');
+        break;
+      case 'brand':
         newValue = value.replace(/[^a-zA-Z\s]/g, '');
         break;
-      case 'phoneNumber':
-      
-      // Allow only numbers and validate format
-      newValue = value.replace(/\D/g, '').slice(0, 10);
-      if (!/^0[0-9]{9}$/.test(newValue)) {
-        error = 'Phone number must start with 0 and be exactly 10 digits';
-      } else {
-        error = '';
-
+      case 'quantity':
+        newValue = value.replace(/\D/g, '');
+        break;
+      case 'manufacturingDate':
+        const today = new Date();
+        const selectedDate = new Date(value);
+        if (selectedDate > today) {
+          newValue = '';
         }
         break;
-      case 'email':
-        // Basic email format validation
-        if (!value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
-          error = 'Invalid email format';
-        } else {
-          error = '';
-        }
-
+      case 'productImage':
+        newValue = files[0];
         break;
       default:
         break;
@@ -207,32 +103,63 @@ const AddProduct = () => {
       [name]: newValue,
     });
 
-    setErrors({
-      ...errors,
-      [name]: error,
-    });
-  
+    validate(name, newValue);
+  };
 
+  const handleKeyDown = (e) => {
+    const { name } = e.target;
+    const key = e.key;
+
+    if (name === "purchasePrice" || name === "quantity") {
+      if (!/^\d$/.test(key) && key !== "Backspace" && key !== "Delete" && key !== "ArrowLeft" && key !== "ArrowRight") {
+        e.preventDefault();
+      }
+    }
+
+    if (name === "brand") {
+      if (!/^[a-zA-Z\s]$/.test(key) && key !== "Backspace" && key !== "Delete" && key !== "ArrowLeft" && key !== "ArrowRight" && key !== " ") {
+        e.preventDefault();
+      }
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-     // Prevent form submission if there are validation errors
-     if (errors.phoneNumber || errors.email) {
-      alert("Please fix the errors before submitting the form.");
+    // Ensure all fields are valid before submitting
+    let isValid = true;
+    for (const key in errors) {
+      if (errors[key]) {
+        isValid = false;
+        break;
+      }
+    }
+
+    if (!isValid) {
+      alert("Please fix the errors before submitting");
       return;
+    }
+
+    const formData = new FormData();
+    for (const key in product) {
+      formData.append(key, product[key]);
     }
 
     try {
       const response = await axios.post(
         "http://localhost:3000/seller/add-product",
-        product
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }
       );
       console.log(response.data);
       alert("Product added successfully!");
     } catch (error) {
-      console.error(error);
+      console.error("Error:", error);
+      console.error("Error response data:", error.response?.data); // Log error response data
       alert("Failed to add product");
     }
   };
@@ -271,18 +198,29 @@ const AddProduct = () => {
             <option value="milk butter">Milk Butter</option>
             <option value="curd">Curd</option>
           </Form.Select>
-          {/* Optional: Display error message for invalid input */}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="productImage">
-          <Form.Label>Product Image URL:</Form.Label>
+          <Form.Label>Product Image:</Form.Label>
           <Form.Control
-            type="text"
+            type="file"
             name="productImage"
-            value={product.productImage}
             onChange={handleChange}
             required
           />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="sellerName">
+          <Form.Label>Seller Name with Your Initials:</Form.Label>
+          <Form.Control
+            type="text"
+            name="sellerName"
+            value={product.sellerName}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+            required
+          />
+          {errors.sellerName && <span style={{ color: 'red' }}>{errors.sellerName}</span>}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="purchasePrice">
@@ -292,8 +230,10 @@ const AddProduct = () => {
             name="purchasePrice"
             value={product.purchasePrice}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
             required
           />
+          {errors.purchasePrice && <span style={{ color: 'red' }}>{errors.purchasePrice}</span>}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="brand">
@@ -303,8 +243,10 @@ const AddProduct = () => {
             name="brand"
             value={product.brand}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
             required
           />
+          {errors.brand && <span style={{ color: 'red' }}>{errors.brand}</span>}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="quantity">
@@ -314,8 +256,10 @@ const AddProduct = () => {
             name="quantity"
             value={product.quantity}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
             required
           />
+          {errors.quantity && <span style={{ color: 'red' }}>{errors.quantity}</span>}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="manufacturingDate">
@@ -327,44 +271,7 @@ const AddProduct = () => {
             onChange={handleChange}
             required
           />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="sellerName">
-          <Form.Label>Seller Name:</Form.Label>
-          <Form.Control
-            type="text"
-            name="sellerName"
-            value={product.sellerName}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="phoneNumber">
-          <Form.Label>Phone Number:</Form.Label>
-          <Form.Control
-            type="text"
-            name="phoneNumber"
-            value={product.phoneNumber}
-            onChange={handleChange}
-            required
-            isInvalid={errors.phoneNumber !== ''}
-          />
-          {/* Optional: Add validation feedback UI for phone number */}
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email:</Form.Label>
-          <Form.Control
-            type="email"
-            name="email"
-            value={product.email}
-            onChange={handleChange}
-            
-            required
-            isInvalid={errors.email !== ''}
-          />
-          {/* Optional: Add validation feedback UI for email */}
+          {errors.manufacturingDate && <span style={{ color: 'red' }}>{errors.manufacturingDate}</span>}
         </Form.Group>
 
         <Button variant="primary" type="submit">
@@ -376,3 +283,16 @@ const AddProduct = () => {
 };
 
 export default AddProduct;
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,10 +1,12 @@
+
 import React, { useEffect, useState } from 'react';
-import { Container, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Avatar, Grid, Box } from '@mui/material';
+import { Container, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Avatar, Grid, Box, TextField } from '@mui/material';
 import axios from 'axios';
 
 const AdminDashboard = () => {
   const [products, setProducts] = useState([]);
   const [users, setUsers] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     // Fetch products from the temporary storage
@@ -42,17 +44,6 @@ const AdminDashboard = () => {
     }
   };
 
-  const handleReject = async (productId) => {
-    try {
-      // For now, just remove the product from the list without saving to the main collection
-      setProducts(products.filter(product => product._id !== productId));
-      alert('Product rejected');
-    } catch (error) {
-      console.error('Error rejecting product:', error);
-      alert('Failed to reject product');
-    }
-  };
-
   const handleDelete = async (productId) => {
     try {
       await axios.delete(`http://localhost:3000/admin/delete-product/${productId}`);
@@ -64,6 +55,14 @@ const AdminDashboard = () => {
     }
   };
 
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const filteredProducts = products.filter(product =>
+    product.productName.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <Container>
       <Typography variant="h4" component="h1" gutterBottom>
@@ -74,6 +73,16 @@ const AdminDashboard = () => {
         <Typography variant="h6" component="h2" gutterBottom>
           Product ({products.length})
         </Typography>
+
+        <TextField
+          label="Search Products"
+          variant="outlined"
+          fullWidth
+          margin="normal"
+          value={searchQuery}
+          onChange={handleSearchChange}
+        />
+
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
@@ -82,51 +91,39 @@ const AdminDashboard = () => {
                 <TableCell>Price</TableCell>
                 <TableCell>Quantity</TableCell>
                 <TableCell>Sub-total</TableCell>
-                <TableCell>Actions</TableCell>
+                <TableCell>Approval</TableCell>
+                <TableCell>Delete</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {products.map((product) => (
+              {filteredProducts.map((product) => (
                 <TableRow key={product._id}>
                   <TableCell>
                     <Grid container alignItems="center" spacing={2}>
                       <Grid item>
-                        <Avatar alt={product.name} src={product.image} />
+                        <Avatar alt={product.productName} src={`http://localhost:3000/${product.productImage}`} />
                       </Grid>
-                      <Grid item>{product.name}</Grid>
+                      <Grid item>{product.productName}</Grid>
                     </Grid>
                   </TableCell>
-                  <TableCell>${product.price}</TableCell>
+                  <TableCell>${product.purchasePrice}</TableCell>
                   <TableCell>{product.quantity}</TableCell>
-                  <TableCell>${product.price * product.quantity}</TableCell>
+                  <TableCell>${product.purchasePrice * product.quantity}</TableCell>
                   <TableCell>
                     <Grid container spacing={1}>
-                      {!product.approved && (
-                        <>
-                          <Grid item>
-                            <Button
-                              variant="contained"
-                              color="success"
-                              size="small"
-                              onClick={() => handleApprove(product._id)}
-                            >
-                              Approve
-                            </Button>
-                          </Grid>
-                          
-                        </>
+                      {product.approvalStatus === 'waiting' && (
+                        <Grid item>
+                          <Button
+                            variant="contained"
+                            color="success"
+                            size="small"
+                            onClick={() => handleApprove(product._id)}
+                          >
+                            Approve
+                          </Button>
+                        </Grid>
                       )}
-                      <Grid item>
-                        <Button
-                          variant="contained"
-                          color="error"
-                          size="small"
-                          onClick={() => handleDelete(product._id)}
-                        >
-                          Delete
-                        </Button>
-                      </Grid>
-                      {product.approved && (
+                      {product.approvalStatus === 'approved' && (
                         <Grid item>
                           <Typography variant="body2" color="success.main">
                             Approved
@@ -135,16 +132,27 @@ const AdminDashboard = () => {
                       )}
                     </Grid>
                   </TableCell>
+                  <TableCell>
+                    <Grid item>
+                      <Button
+                        variant="contained"
+                        color="error"
+                        size="small"
+                        onClick={() => handleDelete(product._id)}
+                      >
+                        Delete
+                      </Button>
+                    </Grid>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
       </Box>
-
-    
     </Container>
   );
 };
 
 export default AdminDashboard;
+

@@ -1,4 +1,5 @@
-import "react";
+//import React from "react";
+import PropTypes from "prop-types";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
@@ -26,15 +27,21 @@ function ProductCard({ img, title, paragraph }) {
         <h3>{title}</h3>
       </div>
       <div style={{ display: "flex", justifyContent: "center", marginTop: "2px", textAlign: "center" }}>
-        <h8>{paragraph}</h8>
+        <p>{paragraph}</p>
       </div>
       <div style={{ display: "flex", justifyContent: "center", marginTop: "20px", textAlign: "center" }}>
-        <Link to ="/Yogurt">
-        <Button variant="outline-primary">View</Button>
+        <Link to="/Yogurt">
+          <Button variant="outline-primary">View</Button>
         </Link>
       </div>
     </Card>
   );
 }
+
+ProductCard.propTypes = {
+  img: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  paragraph: PropTypes.string.isRequired,
+};
 
 export default ProductCard;

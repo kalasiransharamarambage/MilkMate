@@ -1,148 +1,18 @@
-// // src/VendorRegistrationForm.js
-// import React, { useState } from 'react';
-// // import Container from "react-bootstrap/Container";
-// // import Card from "react-bootstrap/Card";
-// import Row from "react-bootstrap/Row";
-// import Col from "react-bootstrap/Col";
-// import Image from "react-bootstrap/Image";
-// import milkproducts from "../../assets/Img/milkproducts.jpg";
-// import Form from "react-bootstrap/Form";
-// import axios from 'axios';
-
-// const VendorRegistrationForm = () => {
-//     const [formData, setFormData] = useState({
-//         businessName: '',
-//         address1: '',
-//         address2: '',
-//         city: '',
-//         region: '',
-//         postalCode: '',
-//         country: 'United States',
-//         firstName: '',
-//         lastName: '',
-//         phoneNumber: '',
-//         mobilePhone: '',
-//         emailAddress: '',
-//         terms: false,
-//     });
-
-//     const handleChange = (e) => {
-//         const { name, value, type, checked } = e.target;
-//         setFormData({
-//             ...formData,
-//             [name]: type === 'checkbox' ? checked : value,
-//         });
-//     };
-
-//     const handleSubmit = async (e) => {
-//         e.preventDefault();
-//         try {
-//             const response = await axios.post('http://localhost:3000/api/register', formData);
-//             if (response.status === 201) {
-//                 alert('Registration successful!');
-//             } else {
-//                 alert('Registration failed!');
-//             }
-//         } catch (error) {
-//             alert('Registration failed!');
-//         }
-//     };
-
-//     return (
-       
-           
-//             <Row>
-//               <Col md={6}>
-//                 <Image 
-//                   src={milkproducts} 
-//                   alt="Milk products" 
-//                   style={{ width: "100%", height: "auto", borderRadius: "10px" }} 
-//                 />
-//               </Col>
-//               <Col md={6}>
-//                 <h2 className="text-center mb-4" style={{ fontSize: "30px", color: "#0B4EFC", fontFamily: "Arial, sans-serif" }}>
-//                   Seller Registration
-//                 </h2>
-//         <form onSubmit={handleSubmit}>
-          
-//             <label>
-          
-//                 Business Name:
-                
-//                 <input type="text" name="businessName" value={formData.businessName} onChange={handleChange} required />
-              
-//                 </label><br/>
-           
-//             <label>
-//                 Address:
-//                 <input type="text" name="address1" value={formData.address1} onChange={handleChange} required />
-//             </label><br />
-           
-//             <label>
-//                 City:
-//                 <input type="text" name="city" value={formData.city} onChange={handleChange} required />
-//             </label><br />
-//             <label>
-//                 Region:
-//                 <input type="text" name="region" value={formData.region} onChange={handleChange} required />
-//             </label><br />
-           
-//             <label>
-//                 Country:
-//                 <input type="text" name="country" value={formData.country} onChange={handleChange} required />
-//             </label><br />
-//             <label>
-//                 First Name:
-//                 <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
-//             </label><br />
-//             <label>
-//                 Last Name:
-//                 <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required />
-//             </label><br />
-//             <label>
-//                 Phone Number:
-//                 <input type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
-//             </label><br />
-//             <label>
-//                 Mobile Phone:
-//                 <input type="text" name="mobilePhone" value={formData.mobilePhone} onChange={handleChange} required />
-//             </label><br />
-//             <label>
-//                 Email Address:
-//                 <input type="email" name="emailAddress" value={formData.emailAddress} onChange={handleChange} required />
-//             </label><br />
-//             <label>
-//                 <input type="checkbox" name="terms" checked={formData.terms} onChange={handleChange} required />
-//                 I agree to <a href="#">Terms of Service</a>
-//             </label><br />
-//             <button type="submit">Send Application</button>
-//         </form>
-//         </Col>
-//             </Row>
-         
-      
-       
-//     );
-// };
-
-// export default VendorRegistrationForm;
-
-
-
 import React, { useState } from "react";
-import { Container, Row, Col, Form, Button, Image } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Image,Card } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-// import bcrypt from "bcryptjs"; // Import bcryptjs for password hashing
 import "bootstrap/dist/css/bootstrap.min.css";
-// import "./SignUpPage.css";
-import milkproducts from "../../assets/Img/milkproducts.jpg";
+import sellerimg from "../../assets/Img/sellersignupimg.jpg";
 
 const SignUpPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
+  const [businessName, setBusinessName] = useState("");
+  const [city, setCity] = useState("");
+  const [religion, setReligion] = useState("");
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
@@ -159,6 +29,21 @@ const SignUpPage = () => {
   const validatePhone = (phone) => {
     const re = /^0[0-9]{9}$/; // Starts with 0, followed by 9 digits
     return re.test(String(phone));
+
+  };
+
+  const validateCity = (city) => {
+    const re = /^[a-zA-Z\s]+$/;
+    return re.test(String(city));
+  };
+
+  const validatePassword = (password) => {
+    return password.length === 8;
+  };
+
+  const validateBusinessName = (businessName) => {
+    const re = /^[a-zA-Z\s]+$/;
+    return re.test(String(businessName));
   };
 
   const handleNameChange = (e) => {
@@ -182,10 +67,9 @@ const SignUpPage = () => {
 
   const handleEmailChange = (e) => {
     const input = e.target.value;
-    const onlyAllowedCharacters = input.replace(/[^a-z0-9.@]/g, ""); // Allow simple letters, "@" symbol, ".", and numbers
-    setEmail(onlyAllowedCharacters);
+    setEmail(input);
 
-    if (!validateEmail(onlyAllowedCharacters)) {
+    if (!validateEmail(input)) {
       setErrors((prevErrors) => ({
         ...prevErrors,
         email: "Invalid email format",
@@ -216,6 +100,7 @@ const SignUpPage = () => {
       });
     }
   };
+
   const handlePasswordChange = (e) => {
     const input = e.target.value;
     setPassword(input);
@@ -223,7 +108,7 @@ const SignUpPage = () => {
     if (!validatePassword(input)) {
       setErrors((prevErrors) => ({
         ...prevErrors,
-        password: "input valid pwd",
+        password: "Password must be exactly 8 characters long",
       }));
     } else {
       setErrors((prevErrors) => {
@@ -232,10 +117,47 @@ const SignUpPage = () => {
       });
     }
   };
-  
 
-  const validatePassword = (password) => {
-    return password.length === 8;
+  const handleBusinessNameChange = (e) => {
+    const input = e.target.value;
+    const onlyLettersAndSpaces = input.replace(/[^a-zA-Z\s]/g, ""); // Remove non-letter characters except spaces
+
+    setBusinessName(onlyLettersAndSpaces);
+
+    if (!validateBusinessName(onlyLettersAndSpaces)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        businessName: "Business Name should only contain letters and spaces",
+      }));
+    } else {
+      setErrors((prevErrors) => {
+        const { businessName, ...rest } = prevErrors;
+        return rest;
+      });
+    }
+  };
+
+  const handleCityChange = (e) => {
+    const input = e.target.value;
+    const onlyLettersAndSpaces = input.replace(/[^a-zA-Z\s]/g, ""); // Remove non-letter characters except spaces
+
+    setCity(onlyLettersAndSpaces);
+
+    if (!validateCity(onlyLettersAndSpaces)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        city: "City should only contain letters and spaces",
+      }));
+    } else {
+      setErrors((prevErrors) => {
+        const { city, ...rest } = prevErrors;
+        return rest;
+      });
+    }
+  };
+
+  const handleReligionChange = (e) => {
+    setReligion(e.target.value);
   };
 
   const handleSubmit = async (e) => {
@@ -253,6 +175,14 @@ const SignUpPage = () => {
     if (!password || !validatePassword(password))
       validationErrors.password =
         "Password is required and must be exactly 8 characters long";
+    if (!businessName || !validateBusinessName(businessName))
+      validationErrors.businessName =
+        "Business Name is required and should only contain letters";
+    if (!city || !validateCity(city))
+      validationErrors.city =
+        "City is required and should only contain letters";
+    if (!religion)
+      validationErrors.religion = "Religion is required";
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -260,12 +190,14 @@ const SignUpPage = () => {
     }
 
     try {
-      // const hashedPassword = await bcrypt.hash(password, 10);
       const response = await axios.post("http://localhost:3000/api/register", {
         name,
         email,
         phone,
         password,
+        businessName,
+        city,
+        religion,
       });
       alert(response.data);
       navigate("/sellerlogin");
@@ -275,12 +207,19 @@ const SignUpPage = () => {
   };
 
   return (
-    <Container fluid className="vh-100">
+    <Container fluid className="vh-100 d-flex flex-column  align-items-center">
+    {/* <h1 className=" mb-4" style={{ fontSize: "45px", color: "black" }}>
+      WELCOME TO SELLER DASHBOARD
+    </h1> */}
+    <Card className="p-4 shadow-sm w-100" style={{ maxWidth: "1200px", backgroundColor: "#C9E9F2", height: "1000px" }}>
       <Row className="h-100">
         <Col md={4} className="p-0">
           <div className="image-container">
-            <Image src={milkproducts} alt="SignUp"
-             style={{ width: "100%", height: "auto", borderRadius: "10px" }}  />
+            <Image
+              src={sellerimg}
+              alt="SignUp"
+              style={{ width: "450px", height: "550px", borderRadius: "10px" ,marginLeft:"20px",marginTop:"130px"}}
+            />
           </div>
         </Col>
         <Col
@@ -288,15 +227,29 @@ const SignUpPage = () => {
           className="d-flex align-items-center justify-content-center"
         >
           <Form className="w-75 form-background" onSubmit={handleSubmit}>
-            <h2 className="text-center mb-4">
-              <b>Welcome to Sign Up Page</b>
-            </h2>
-            <Form.Group controlId="formName">
+          <h2 className="text-center mb-4" style={{ fontSize: "30px", color: "#0B4EFC", fontFamily: "Arial, sans-serif" }}>
+                Welcome to Seller SignUp
+              </h2>
+            <Form.Group controlId="formBusinessName">
+            <Form.Label>Business Name :</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Name"
+                placeholder="Enter your Business Name"
+                value={businessName}
+                onChange={handleBusinessNameChange}
+                isInvalid={!!errors.businessName}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.businessName}
+              </Form.Control.Feedback>
+            </Form.Group><br/>
+
+            <Form.Group controlId="formName">
+            <Form.Label>Seller Name :</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter your Seller Name"
                 value={name}
-                // onChange={(e) => setName(e.target.value)}
                 onChange={handleNameChange}
                 isInvalid={!!errors.name}
               />
@@ -306,11 +259,11 @@ const SignUpPage = () => {
             </Form.Group>
             <br />
             <Form.Group controlId="formEmail">
+            <Form.Label>Email :</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="Email"
+                placeholder="Enter your Email"
                 value={email}
-                // onChange={(e) => setEmail(e.target.value)}
                 onChange={handleEmailChange}
                 isInvalid={!!errors.email}
               />
@@ -320,11 +273,11 @@ const SignUpPage = () => {
             </Form.Group>
             <br />
             <Form.Group controlId="formPhoneNumber">
+            <Form.Label>Phone Number :</Form.Label>
               <Form.Control
                 type="tel"
-                placeholder="Phone number"
+                placeholder="Enter your Phone number"
                 value={phone}
-                // onChange={(e) => setPhone(e.target.value)}
                 onChange={handlePhoneChange}
                 isInvalid={!!errors.phone}
               />
@@ -333,21 +286,57 @@ const SignUpPage = () => {
               </Form.Control.Feedback>
             </Form.Group>
             <br />
+          
+          
+            
+            <Form.Group controlId="formCity">
+            <Form.Label>City :</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter your City"
+                value={city}
+                onChange={handleCityChange}
+                isInvalid={!!errors.city}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.city}
+              </Form.Control.Feedback>
+            </Form.Group>
+            <br />
+            <Form.Group controlId="formReligion">
+            <Form.Label>Religion :</Form.Label>
+              <Form.Control
+                as="select"
+                value={religion}
+                onChange={handleReligionChange}
+                isInvalid={!!errors.religion}
+              >
+                <option value="">Select Religion</option>
+                <option value="Christianity">Christianity</option>
+                <option value="Islam">Islam</option>
+                <option value="Hinduism">Hinduism</option>
+                <option value="Buddhism">Buddhism</option>
+                <option value="Other">Other</option>
+              </Form.Control>
+              <Form.Control.Feedback type="invalid">
+                {errors.religion}
+              </Form.Control.Feedback>
+            </Form.Group>
+            <br />
             <Form.Group controlId="formPassword">
+            <Form.Label>Password :</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="Password"
+                placeholder=" Enter Your Password"
                 value={password}
-                // onChange={(e) => setPassword(e.target.value)}
                 onChange={handlePasswordChange}
                 isInvalid={!!errors.password}
               />
               <Form.Control.Feedback type="invalid">
                 {errors.password}
               </Form.Control.Feedback>
-            </Form.Group>
-            <br />
-            <Button variant="success" type="submit" className="w-100">
+            </Form.Group><br/>
+            <Button variant="primary" type="submit" className="w-100">
               Register
             </Button>
             <div className="text-center mt-3">
@@ -358,8 +347,13 @@ const SignUpPage = () => {
           </Form>
         </Col>
       </Row>
+      </Card>
     </Container>
   );
 };
 
 export default SignUpPage;
+
+
+
+

@@ -1,101 +1,3 @@
-// import React from 'react';
-// import { Col, Row, Form, Button, Card } from 'react-bootstrap';
-// import { MdDelete } from "react-icons/md";
-// import { FaEdit } from "react-icons/fa";
-
-// const formFields = [
-//   { label: 'Product Name', type: 'text', placeholder: 'Enter product name' },
-//   { label: 'Product Image', type: 'text', placeholder: 'Add Image', style: { height: '150px' } },
-//   { label: 'Purchase Price', type: 'text', placeholder: 'Enter purchase price' },
-//   { label: 'Brand', type: 'text', placeholder: 'Enter brand' },
-//   { label: 'Quantity', type: 'text', placeholder: 'Enter quantity' },
-//   { label: 'Manufacturing Date', type: 'text', placeholder: 'Enter manufacturing date' },
-//   { label: 'Pack Size', type: 'text', placeholder: 'Enter pack size' },
-//   { label: 'Seller Name', type: 'text', placeholder: 'Enter seller name' },
-//   { label: 'Phone Number', type: 'text', placeholder: 'Enter phone number' },
-//   { label: 'Email Address', type: 'email', placeholder: 'Enter email' },
-// ];
-
-// function SellerAddProducts() {
-//   return (
-//     <Card
-//       style={{
-//         width: '800px',
-//         maxWidth: '80rem',
-//         padding: '20px',
-//         border: 'none',
-//         backgroundColor: '#C9E9F2',
-//         boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.5)',
-//         margin: '0 auto',
-//       }}
-//     >
-//       <Form style={{ marginLeft: "20px" }}>
-//         <Row className="mb-3">
-//           <Col className="text-center" style={{ fontSize: '35px', fontWeight: 'bold' }}>
-//             Add Products
-//           </Col>
-//         </Row>
-//         <Row className="mb-3">
-//           <Col>
-//             <h4 style={{ marginLeft: "60px" }}>Product Information</h4>
-//           </Col>
-//         </Row>
-//         {formFields.slice(0, 7).map((field, index) => (
-//           <Form.Group className="mb-3" key={index}>
-//             <Row>
-//               <Col xs={12} md={2} className="text-md-end">
-//                 <Form.Label>{field.label} :</Form.Label>
-//               </Col>
-//               <Col xs={12} md={8}>
-//                 <Form.Control
-//                   style={{ width: '100%', textAlign: "center", ...field.style }}
-//                   type={field.type}
-//                   placeholder={field.placeholder}
-//                 />
-//               </Col>
-//               <Col xs={12} md={2} className="text-center d-flex align-items-center justify-content-center">
-
-//               </Col>
-//             </Row>
-//           </Form.Group>
-//         ))}
-//         <Row className="mb-3">
-//           <Col>
-//             <h4 style={{ marginLeft: "60px" }}>Contact Information</h4>
-//           </Col>
-//         </Row>
-//         {formFields.slice(7).map((field, index) => (
-//           <Form.Group className="mb-3" key={index}>
-//             <Row>
-//               <Col xs={12} md={2} className="text-md-end">
-//                 <Form.Label>{field.label} :</Form.Label>
-//               </Col>
-//               <Col xs={12} md={8}>
-//                 <Form.Control
-//                   style={{ width: '100%', textAlign: "center" }}
-//                   type={field.type}
-//                   placeholder={field.placeholder}
-//                 />
-//               </Col>
-//               <Col xs={12} md={2} className="text-center d-flex align-items-center justify-content-center">
-
-//               </Col>
-//             </Row>
-//           </Form.Group>
-//         ))}
-//         <Row className="mb-3">
-//           <Col className="text-center">
-//             <Button variant="primary" type="submit">Submit</Button>
-//           </Col>
-//         </Row>
-//       </Form>
-//     </Card>
-//   );
-// }
-
-// export default SellerAddProducts;
-
-// src/components/AddProduct.js
 
 import React, { useState } from "react";
 import axios from "axios";
@@ -104,41 +6,166 @@ import { Col, Row, Form, Button, Card } from "react-bootstrap";
 const AddProduct = () => {
   const [product, setProduct] = useState({
     productName: "",
-    productImage: "",
+    productImage: null,
     purchasePrice: "",
     brand: "",
     quantity: "",
     manufacturingDate: "",
-    sellerName: "",
-    phoneNumber: "",
-    email: "",
+    sellerName:"",
   });
 
+  const [errors, setErrors] = useState({
+    purchasePrice: "",
+    brand: "",
+    quantity: "",
+    manufacturingDate: "",
+    sellerName:"",
+
+  });
+
+  const validate = (name, value) => {
+    let error = "";
+    switch (name) {
+      case "sellerName":
+        if (!/^[a-zA-Z\s!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/.test(value)) {
+          error = "Brand must contain only letters and symbols";
+        }
+        break;
+      case "purchasePrice":
+        if (!/^\d*$/.test(value)) {
+          error = "Purchase Price must be a number";
+        }
+        break;
+      case "brand":
+        if (!/^[a-zA-Z\s]*$/.test(value)) {
+          error = "Brand must contain only letters";
+        }
+        break;
+      case "quantity":
+        if (!/^\d*$/.test(value)) {
+          error = "Quantity must be a number";
+        }
+        break;
+      case "manufacturingDate":
+        const today = new Date();
+        const selectedDate = new Date(value);
+        if (selectedDate > today) {
+          error = "Manufacturing Date cannot be in the future";
+        }
+        break;
+      default:
+        break;
+    }
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: error,
+    }));
+  };
+
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, files } = e.target;
+    let newValue = value;
+
+    switch (name) {
+      case 'productName':
+        if (!['Yoghurt', 'cheese', 'yoghurt drink', 'Milk powder', 'milk butter', 'curd'].includes(value)) {
+          newValue = '';
+        }
+        break;
+        case 'sellerName':
+        newValue = value.replace(/[^a-zA-Z\s!@#$%^&*()_+=\-[\]{};':"\\|,.<>/?]/g, '');
+        break;
+      case 'purchasePrice':
+        newValue = value.replace(/\D/g, '');
+        break;
+      case 'brand':
+        newValue = value.replace(/[^a-zA-Z\s]/g, '');
+        break;
+      case 'quantity':
+        newValue = value.replace(/\D/g, '');
+        break;
+      case 'manufacturingDate':
+        const today = new Date();
+        const selectedDate = new Date(value);
+        if (selectedDate > today) {
+          newValue = '';
+        }
+        break;
+      case 'productImage':
+        newValue = files[0];
+        break;
+      default:
+        break;
+    }
+
     setProduct({
       ...product,
-      [name]: value,
+      [name]: newValue,
     });
+
+    validate(name, newValue);
+  };
+
+  const handleKeyDown = (e) => {
+    const { name } = e.target;
+    const key = e.key;
+
+    if (name === "purchasePrice" || name === "quantity") {
+      if (!/^\d$/.test(key) && key !== "Backspace" && key !== "Delete" && key !== "ArrowLeft" && key !== "ArrowRight") {
+        e.preventDefault();
+      }
+    }
+
+    if (name === "brand") {
+      if (!/^[a-zA-Z\s]$/.test(key) && key !== "Backspace" && key !== "Delete" && key !== "ArrowLeft" && key !== "ArrowRight" && key !== " ") {
+        e.preventDefault();
+      }
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Ensure all fields are valid before submitting
+    let isValid = true;
+    for (const key in errors) {
+      if (errors[key]) {
+        isValid = false;
+        break;
+      }
+    }
+
+    if (!isValid) {
+      alert("Please fix the errors before submitting");
+      return;
+    }
+
+    const formData = new FormData();
+    for (const key in product) {
+      formData.append(key, product[key]);
+    }
+
     try {
       const response = await axios.post(
         "http://localhost:3000/seller/add-product",
-        product
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }
       );
       console.log(response.data);
       alert("Product added successfully!");
     } catch (error) {
-      console.error(error);
+      console.error("Error:", error);
+      console.error("Error response data:", error.response?.data); // Log error response data
       alert("Failed to add product");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Card
         style={{
           width: "850px",
@@ -151,55 +178,121 @@ const AddProduct = () => {
         }}
       >
         <Row className="mb-3">
-         <Col className="text-center" style={{ fontSize: '35px', fontWeight: 'bold' }}>
+          <Col className="text-center" style={{ fontSize: '35px', fontWeight: 'bold' }}>
             Add Products
-         </Col>
+          </Col>
         </Row>
-      <div>
-      
-        <label>Product Name: </label>
-        <input type="text" name="productName" value={product.productName} onChange={handleChange} required />
-       
-      </div>
-    
-      <br/>
-      <div>
-        <label>Product Image URL: </label>
-        <input type="text" name="productImage" value={product.productImage} onChange={handleChange} required />
-      </div><br/>
-      <div>
-        <label>Purchase Price: </label>
-        <input type="number" name="purchasePrice" value={product.purchasePrice} onChange={handleChange} required />
-      </div><br/>
-      <div>
-        <label>Brand: </label>
-        <input type="text" name="brand" value={product.brand} onChange={handleChange} required />
-      </div><br/>
-      <div>
-        <label>Quantity: </label>
-        <input type="number" name="quantity" value={product.quantity} onChange={handleChange} required />
-      </div><br/>
-      <div>
-        <label>Manufacturing Date: </label>
-        <input type="date" name="manufacturingDate" value={product.manufacturingDate} onChange={handleChange} required />
-      </div><br/>
-      <div>
-        <label>Seller Name: </label>
-        <input type="text" name="sellerName" value={product.sellerName} onChange={handleChange} required />
-      </div><br/>
-      <div>
-        <label>Phone Number: </label>
-        <input type="text" name="phoneNumber" value={product.phoneNumber} onChange={handleChange} required />
-      </div><br/>
-      <div>
-        <label>Email: </label>
-        <input type="email" name="email" value={product.email} onChange={handleChange} required />
-      </div><br/>
-      <button type="submit">Add</button>
-        
+        <Form.Group className="mb-3" controlId="productName">
+          <Form.Label>Product Name:</Form.Label>
+          <Form.Select
+            name="productName"
+            value={product.productName}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Product</option>
+            <option value="Yoghurt">Yoghurt</option>
+            <option value="cheese">Cheese</option>
+            <option value="yoghurt drink">Yoghurt Drink</option>
+            <option value="Milk powder">Milk Powder</option>
+            <option value="milk butter">Milk Butter</option>
+            <option value="curd">Curd</option>
+          </Form.Select>
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="productImage">
+          <Form.Label>Product Image:</Form.Label>
+          <Form.Control
+            type="file"
+            name="productImage"
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="sellerName">
+          <Form.Label>Seller Name with Your Initials:</Form.Label>
+          <Form.Control
+            type="text"
+            name="sellerName"
+            value={product.sellerName}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+            required
+          />
+          {errors.sellerName && <span style={{ color: 'red' }}>{errors.sellerName}</span>}
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="purchasePrice">
+          <Form.Label>Purchase Price:</Form.Label>
+          <Form.Control
+            type="number"
+            name="purchasePrice"
+            value={product.purchasePrice}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+            required
+          />
+          {errors.purchasePrice && <span style={{ color: 'red' }}>{errors.purchasePrice}</span>}
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="brand">
+          <Form.Label>Brand:</Form.Label>
+          <Form.Control
+            type="text"
+            name="brand"
+            value={product.brand}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+            required
+          />
+          {errors.brand && <span style={{ color: 'red' }}>{errors.brand}</span>}
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="quantity">
+          <Form.Label>Quantity:</Form.Label>
+          <Form.Control
+            type="number"
+            name="quantity"
+            value={product.quantity}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+            required
+          />
+          {errors.quantity && <span style={{ color: 'red' }}>{errors.quantity}</span>}
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="manufacturingDate">
+          <Form.Label>Manufacturing Date:</Form.Label>
+          <Form.Control
+            type="date"
+            name="manufacturingDate"
+            value={product.manufacturingDate}
+            onChange={handleChange}
+            required
+          />
+          {errors.manufacturingDate && <span style={{ color: 'red' }}>{errors.manufacturingDate}</span>}
+        </Form.Group>
+
+        <Button variant="primary" type="submit">
+          Add
+        </Button>
       </Card>
-      </form>
+    </Form>
   );
 };
 
 export default AddProduct;
+
+
+
+
+
+
+
+
+
+
+
+
+

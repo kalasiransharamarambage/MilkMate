@@ -32,32 +32,32 @@ function Dashboard() {
         {
             img: yoghurt,
             title: "Yogurt",
-            paragraph: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum libero dicta aspernatur adipisci rem.",
+            paragraph: "Yogurt is a creamy, tangy product created by fermenting milk with beneficial bacteria.",
         },
         {
             img: curd,
             title: "Curd",
-            paragraph: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum libero dicta aspernatur adipisci rem.",
+            paragraph: "Curd is made by adding an acidic substance to milk, causing it to coagulate. It’s similar to yogurt but can vary in taste and texture.",
         },
         {
             img: drink,
             title: "Yogurt Drink",
-            paragraph: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum libero dicta aspernatur adipisci rem.",
+            paragraph: "This is a liquid, drinkable form of yogurt, often flavored and sweetened.",
         },
         {
             img: MilkPowder,
             title: "Milk Powder",
-            paragraph: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum libero dicta aspernatur adipisci rem.",
+            paragraph: "Milk powder is dehydrated milk that retains most nutrients and can be reconstituted with water.",
         },
         {
             img: cheese,
             title: "Cheese",
-            paragraph: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum libero dicta aspernatur adipisci rem.",
+            paragraph: "Cheese is made by coagulating milk, separating the curds, and aging them. Varieties range from soft to hard, and mild to sharp.",
         },
         {
             img: Butter,
             title: "Milk Butter",
-            paragraph: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum libero dicta aspernatur adipisci rem.",
+            paragraph: " Butter is produced by churning cream until it separates into butterfat and buttermilk. The butterfat is then collected and often salted.",
         },
     ]
 

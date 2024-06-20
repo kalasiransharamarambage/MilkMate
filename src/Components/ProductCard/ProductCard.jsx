@@ -12,7 +12,7 @@ function ProductCard({ img, title, paragraph }) {
       style={{
         width: "20rem",
         minHeight: "18rem",
-        height: "23rem",
+        height: "28rem",
         padding: "0px",
         border: "none",
         backgroundColor: "#E1E1EF",
@@ -30,9 +30,12 @@ function ProductCard({ img, title, paragraph }) {
         <p>{paragraph}</p>
       </div>
       <div style={{ display: "flex", justifyContent: "center", marginTop: "20px", textAlign: "center" }}>
+
         <Link to="/Yogurt">
           <Button variant="outline-primary">View</Button>
         </Link>
+
+        <Button variant="outline-primary">Discover More</Button>
       </div>
     </Card>
   );

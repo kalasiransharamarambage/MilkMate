@@ -19,7 +19,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!userData) {
+    if (!userData && user) {
       const fetchUserData = async () => {
         try {
           const response = await axios.get(`http://localhost:5000/api/user/${user.id}`);
@@ -41,8 +41,14 @@ const Dashboard = () => {
   }
 
   return (
-    <Box className="dashboard-container">
-      <Box className="user-info" display="flex" alignItems="center" mb={3}>
+    <Box className="dashboard-container" sx={{ p: 3 }}>
+      <Box
+        className="user-info"
+        display="flex"
+        alignItems="center"
+        mb={3}
+        sx={{ backgroundColor: '#f5f5f5', p: 2, borderRadius: 2 }}
+      >
         <Avatar alt={userData.name} src={userData.avatar} sx={{ width: 64, height: 64 }}>
           {userData.name[0]}
         </Avatar>
@@ -59,15 +65,20 @@ const Dashboard = () => {
       </Box>
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>
-          <Card className="info-card">
+          <Card className="info-card" sx={{ backgroundColor: '#e3f2fd', p: 2, borderRadius: 2 }}>
             <CardContent>
-              <Typography variant="h6">ACCOUNT INFO</Typography>
+              <Typography variant="h6" sx={{ mb: 1 }}>ACCOUNT INFO</Typography>
               <Typography variant="body1">{userData.name}</Typography>
-              <Typography variant="body1">{userData.streetName}, {userData.city}, {userData.district}</Typography>
-              <Typography variant="body1">Email: {userData.email}</Typography>
-              <Typography variant="body1">Phone: {userData.phone}</Typography>
-              <Button variant="outlined" className="button" onClick={handleEditAccount}>
-                <EditIcon />
+              <Typography variant="body1">{`${userData.streetName || 'N/A'}, ${userData.city || 'N/A'}, ${userData.district || 'N/A'}`}</Typography>
+              <Typography variant="body1">{`Email: ${userData.email}`}</Typography>
+              <Typography variant="body1">{`Phone: ${userData.phone}`}</Typography>
+              <Button
+                variant="outlined"
+                className="button"
+                onClick={handleEditAccount}
+                sx={{ mt: 2 }}
+              >
+                <EditIcon sx={{ mr: 1 }} />
                 Edit Account
               </Button>
             </CardContent>

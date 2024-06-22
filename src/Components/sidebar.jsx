@@ -13,12 +13,11 @@ import StarIcon from '@mui/icons-material/Star';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 const sidebarItems = [
-  { text: 'User Dashboard', icon: <DashboardIcon />, path: '/usermanagement' },
-  { text: 'Product Dashboard', icon: <DashboardIcon />, path: '/admindashboard' },
+  { text: 'Dashboard', icon: <DashboardIcon />, path: '/profile' },
   { text: 'Track Order', icon: <LocalShippingIcon />, path: '/track-order' },
   { text: 'Shopping Cart', icon: <ShoppingCartIcon />, path: '/shopping-cart' },
   { text: 'Cards & Address', icon: <CreditCardIcon />, path: '/cards-address' },
-   { text: 'Log-out', icon: <ExitToAppIcon />, path: '/logout' }
+   { text: 'Log-out', icon: <ExitToAppIcon />, path: '/login' }
 ];
 
 const Drawer = styled(MuiDrawer)(({ theme }) => ({

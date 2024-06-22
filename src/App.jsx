@@ -31,10 +31,12 @@ import RegisterForm from "./Pages/RegistrationForm.jsx"
 import Register from "./Pages/register.jsx"
 import Profile from "./Pages/profile.jsx"
 import AdminDashboard from "./Pages/AdminDashboard.jsx";
-import AdminLogin from "./Pages/admin-login.jsx";
+import AdminLogin from "./Pages/AdminLogin.jsx";
 import UserManagement from "./Pages/UserManagement/UserManagement.jsx";
 import SellerRegistration from "./Pages/SellerRegistration/SellerRegistration.jsx";
-
+import LoginForm from "./Pages/LoginForm.jsx";
+import ParentComponent from "./Components/ParentComponent.jsx";
+import SellerManagement from "./Components/SellerManagement.jsx";
 
 
 
@@ -76,8 +78,9 @@ function App() {
         <Route path="/adminlogin" element= {<AdminLogin/>}/> 
         <Route path="/usermanagement" element= {<UserManagement/>}/>
         <Route path="/sellerregistration" element= {<SellerRegistration/>}/> 
-
-
+        <Route path="/loginform" element= {<LoginForm/>}/> 
+        <Route path="/parentcomponent" element= {<ParentComponent/>}/> 
+        <Route path="/sellermanagement" element= {<SellerManagement/>}/> 
         
        
         </Route>

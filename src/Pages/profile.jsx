@@ -1,11 +1,11 @@
 // Profile.js
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Sidebar from './Components/Sidebar.jsx';
-import Dashboard from './components/Dasboard';
-import OrderHistory from './components/OrderHistory';
-import RecommendedProducts from './components/RecommendedProducts';
-import Pagedrawer from './components/PageDrawer';
+import Sidebar from './Components/sidebar.jsx';
+import Dashboard from './Components/Dasboard.jsx';
+import OrderHistory from './Components/OrderHistory.jsx';
+import RecommendedProducts from './Components/RecommendedProducts.jsx';
+import Pagedrawer from './Components/PageDrawer.jsx';
 import './profile.css';
 
 

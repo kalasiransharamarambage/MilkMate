@@ -24,7 +24,7 @@ const ChooseAnimal = () => {
   useEffect(() => {
     const fetchAnimals = async () => {
       try {
-        const response = await axios.get('/api/animals');
+        const response = await axios.get('/api/Canimals');
         if (Array.isArray(response.data)) {
           setAnimals(response.data);
         } else {

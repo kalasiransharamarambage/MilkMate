@@ -50,7 +50,7 @@ const EditAnimal = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.put(`/api/animals/${id}`, { name, description, foodCost, medicineCost, ageGroups });
+      await axios.put(`/api/Canimals/${id}`, { name, description, foodCost, medicineCost, ageGroups });
       navigate('/admin/animals');
     } catch (error) {
       setError(error);

@@ -25,7 +25,7 @@ const ManageAnimals = () => {
   useEffect(() => {
     const fetchAnimals = async () => {
       try {
-        const response = await axios.get('/api/animals');
+        const response = await axios.get('/api/Canimals');
         if (Array.isArray(response.data)) {
           setAnimals(response.data);
         } else {
@@ -43,7 +43,7 @@ const ManageAnimals = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/api/animals/${id}`);
+      await axios.delete(`/api/Canimals/${id}`);
       setAnimals(animals.filter((animal) => animal._id !== id));
     } catch (error) {
       setError(error);

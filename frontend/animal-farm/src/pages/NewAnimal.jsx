@@ -38,7 +38,7 @@ const NewAnimal = () => {
         foodCost,
         medicineCost,
       };
-      await axios.post('/api/animals', payload);
+      await axios.post('/api/Canimals', payload);
       navigate('/admin/animals');
     } catch (error) {
       setError(error);

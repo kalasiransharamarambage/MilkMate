@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Animal = require('./models/Animal');
+const Animal = require('./models/CAnimal');
 const AgeGroup = require('./models/AgeGroup');
 
 mongoose.connect('mongodb+srv://Tharushika:MilkMate2024@milk-mate-web.rd3iyax.mongodb.net/test?retryWrites=true&w=majority', {

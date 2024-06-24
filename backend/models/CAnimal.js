@@ -5,13 +5,13 @@ const AgeGroupSchema = new mongoose.Schema({
   sqFtRequired: { type: Number, required: true },
 });
 
-const AnimalSchema = new mongoose.Schema({
+const CAnimalSchema = new mongoose.Schema({
   name: { type: String, required: true },
   ageGroups: [AgeGroupSchema],
   description: String,
   photoUrl: String,
   foodCost: Number,
   medicineCost: Number,
-});
+},{ collection: 'C-Animal' });
 
-module.exports = mongoose.model('Animal', AnimalSchema);
+module.exports = mongoose.model('CAnimal', CAnimalSchema);

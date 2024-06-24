@@ -41,6 +41,15 @@ const ManageAnimals = () => {
     fetchAnimals();
   }, []);
 
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`/api/animals/${id}`);
+      setAnimals(animals.filter((animal) => animal._id !== id));
+    } catch (error) {
+      setError(error);
+    }
+  };
+
   if (loading) {
     return (
       <Container>
@@ -94,7 +103,7 @@ const ManageAnimals = () => {
                   <Button
                     variant="contained"
                     color="error"
-                    onClick={() => {/* Add delete functionality here */}}
+                    onClick={() => handleDelete(animal._id)}
                   >
                     Delete
                   </Button>

@@ -1,47 +1,48 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AnimalContext } from '../context/AnimalContext';
-import {
-  Container,
-  Typography,
-  List,
-  ListItem,
-  ListItemText,
-  Paper,
-  Box,
-} from '@mui/material';
+import { Container, Typography, FormControl, InputLabel, Select, MenuItem, Button } from '@mui/material';
 
 const ChooseAgeGroup = () => {
-  const { animal, setAgeGroup: setAnimalAgeGroup } = useContext(AnimalContext);
+  const { animal, setAgeGroup } = useContext(AnimalContext);
+  const [ageGroups, setAgeGroups] = useState([]);
+  const [selectedAgeGroup, setSelectedAgeGroup] = useState('');
   const navigate = useNavigate();
 
-  if (!animal) {
-    return (
-      <Container>
-        <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
-          <Typography variant="h6">No animal selected.</Typography>
-        </Box>
-      </Container>
-    );
-  }
+  useEffect(() => {
+    if (animal) {
+      setAgeGroups(animal.ageGroups);
+    }
+  }, [animal]);
 
-  const handleSelectAgeGroup = (ageGroup) => {
-    setAnimalAgeGroup(ageGroup);
+  const handleAgeGroupChange = (event) => {
+    setSelectedAgeGroup(event.target.value);
+  };
+
+  const handleSubmit = () => {
+    setAgeGroup(selectedAgeGroup);
     navigate('/enter-quantity');
   };
 
   return (
     <Container>
       <Typography variant="h4" gutterBottom>
-        Choose Age Group for {animal.name}
+        Choose Age Group
       </Typography>
-      <List component={Paper}>
-        {animal.ageGroups.map((age) => (
-          <ListItem button key={age._id} onClick={() => handleSelectAgeGroup(age)}>
-            <ListItemText primary={age.name} />
-          </ListItem>
-        ))}
-      </List>
+      <FormControl fullWidth margin="normal">
+        <InputLabel>Age Group</InputLabel>
+        <Select value={selectedAgeGroup} onChange={handleAgeGroupChange}>
+          {ageGroups.map((ageGroup, index) => (
+            <MenuItem key={index} value={ageGroup.name}>
+              {ageGroup.name}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+      <Button variant="contained" color="primary" onClick={handleSubmit} disabled={!selectedAgeGroup}>
+        Next
+      </Button>
     </Container>
   );
 };

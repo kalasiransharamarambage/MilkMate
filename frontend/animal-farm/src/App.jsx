@@ -17,7 +17,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<ChooseAnimal />} />
+     {/*   <Route path="/" element={<ChooseAnimal />} />
         <Route path="/choose-age-group" element={<ChooseAgeGroup />} />
         <Route path="/enter-quantity" element={<EnterQuantity />} />
         <Route path="/display-animal-details" element={<DisplayAnimalDetails />} />
@@ -28,7 +28,8 @@ const App = () => {
         <Route path="/admin/animals/new" element={<NewAnimal />} />
         <Route path="/admin/age-groups/new" element={<NewAgeGroup />} />
         <Route path="/admin/animals/:id/edit" element={<EditAnimal />} />
-        <Route path="/admin/age-groups/:id/edit" element={<EditAgeGroup />} />
+        <Route path="/admin/age-groups/:id/edit" element={<EditAgeGroup />} />*/}
+        
       </Routes>
     </Router>
   );

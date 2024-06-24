@@ -1,22 +1,19 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import App from './App';
-import { AnimalProvider } from './context/AnimalContext';
-import ErrorBoundary from './components/ErrorBoundary';
-import theme from './theme';
+import './index.css';
 
-const container = document.getElementById('root');
-const root = createRoot(container);
+const theme = createTheme();
 
-root.render(
-  <ThemeProvider theme={theme}>
-    <CssBaseline />
-    <ErrorBoundary>
-      <AnimalProvider>
+ReactDOM.render(
+  <React.StrictMode>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
         <App />
-      </AnimalProvider>
-    </ErrorBoundary>
-  </ThemeProvider>
+      </BrowserRouter>
+    </ThemeProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
 );

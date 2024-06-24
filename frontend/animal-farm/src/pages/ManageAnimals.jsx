@@ -42,6 +42,9 @@ const ManageAnimals = () => {
   }, []);
 
   const handleDelete = async (id) => {
+    if (!window.confirm('Are you sure you want to delete this animal?')) {
+      return;
+    }
     try {
       await axios.delete(`/api/Canimals/${id}`);
       setAnimals(animals.filter((animal) => animal._id !== id));
@@ -97,6 +100,7 @@ const ManageAnimals = () => {
                     variant="contained"
                     color="secondary"
                     onClick={() => navigate(`/admin/animals/${animal._id}/edit`)}
+                    style={{ marginRight: '10px' }}
                   >
                     Edit
                   </Button>

@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
 });
 
 // UPDATE an animal
-router.patch('/:id', getCAnimal, async (req, res) => {
+router.put('/:id', getCAnimal, async (req, res) => {  // Use PUT instead of PATCH for full updates
     if (req.body.name != null) {
         res.animal.name = req.body.name;
     }
@@ -56,15 +56,19 @@ router.patch('/:id', getCAnimal, async (req, res) => {
 });
 
 // DELETE an animal
-router.delete('/:id', getCAnimal, async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
-        await res.animal.remove();
+        const animal = await CAnimal.findById(req.params.id);
+        if (!animal) {
+            return res.status(404).json({ message: 'Animal not found' });
+        }
+        await CAnimal.findByIdAndDelete(req.params.id);
         res.json({ message: 'Deleted Animal' });
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        console.error(err.message);
+        res.status(500).json({ message: 'Server error' });
     }
 });
-
 async function getCAnimal(req, res, next) {
     let animal;
     try {

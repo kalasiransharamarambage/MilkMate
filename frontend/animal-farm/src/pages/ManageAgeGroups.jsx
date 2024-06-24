@@ -41,6 +41,18 @@ const ManageAgeGroups = () => {
     fetchAgeGroups();
   }, []);
 
+  const handleDelete = async (id) => {
+    if (!window.confirm('Are you sure you want to delete this age group?')) {
+      return;
+    }
+    try {
+      await axios.delete(`/api/age-groups/${id}`);
+      setAgeGroups(ageGroups.filter((ageGroup) => ageGroup._id !== id));
+    } catch (error) {
+      setError(error);
+    }
+  };
+
   if (loading) {
     return (
       <Container>
@@ -88,13 +100,14 @@ const ManageAgeGroups = () => {
                     variant="contained"
                     color="secondary"
                     onClick={() => navigate(`/admin/age-groups/${ageGroup._id}/edit`)}
+                    style={{ marginRight: '10px' }}
                   >
                     Edit
                   </Button>
                   <Button
                     variant="contained"
                     color="error"
-                    onClick={() => {/* Add delete functionality here */}}
+                    onClick={() => handleDelete(ageGroup._id)}
                   >
                     Delete
                   </Button>

@@ -17,7 +17,7 @@ const EditAnimal = () => {
   useEffect(() => {
     const fetchAnimal = async () => {
       try {
-        const response = await axios.get(`/api/animals/${id}`);
+        const response = await axios.get(`/api/Canimals/${id}`);
         const animal = response.data;
         setName(animal.name);
         setDescription(animal.description);

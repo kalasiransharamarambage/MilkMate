@@ -14,8 +14,6 @@ mongoose.connect('mongodb+srv://Tharushika:MilkMate2024@milk-mate-web.rd3iyax.mo
 app.use(cors());
 app.use(express.json());
 app.use('/api/Canimals', animalRoutes);
-app.get('/api/Canimals', animalRoutes);
-
 app.use('/api/age-groups', ageGroupRoutes);
 
 const PORT = process.env.PORT || 5000;

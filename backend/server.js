@@ -1,51 +1,39 @@
-// server.js
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
+const dotenv = require('dotenv');
+const connectDB = require('./config/db');
+const animalRoutes = require('./routes/animalRoutes');
+const path = require('path');
+const multer = require('multer');
+
+dotenv.config();
+
+connectDB();
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-mongoose.connect('mongodb+srv://Tharushika:MilkMate2024@milk-mate-web.rd3iyax.mongodb.net/test?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/');
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}-${file.originalname}`);
+  },
 });
 
-const AnimalSchema = new mongoose.Schema({
-  name: String,
-  ageGroups: [
-    {
-      age: String,
-      medicineCost: Number,
-      healthCost: Number,
-      sqft: Number,
-    }
-  ],
-  photo: String,
+const upload = multer({ storage });
+
+app.use('/api/CAnimal', animalRoutes);
+app.post('/api/upload', upload.single('photo'), (req, res) => {
+  res.send(`/${req.file.path}`);
 });
 
-const Animal = mongoose.model('Animal', AnimalSchema);
+const PORT = process.env.PORT || 5000;
 
-app.post('/api/animals', async (req, res) => {
-  try {
-    const animal = new Animal(req.body);
-    await animal.save();
-    res.status(201).send(animal);
-  } catch (error) {
-    res.status(400).send(error);
-  }
-});
-
-app.get('/api/animals', async (req, res) => {
-  try {
-    const animals = await Animal.find();
-    res.send(animals);
-  } catch (error) {
-    res.status(500).send(error);
-  }
-});
-
-app.listen(5000, () => {
-  console.log('Server is running on port 5000');
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
